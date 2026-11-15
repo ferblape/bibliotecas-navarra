@@ -22,6 +22,15 @@ class CatalogTest < ActiveSupport::TestCase
       assert_operator san_pedro.total, :>, 0
     end
 
+    test "searches in one field" do
+      by_author = Catalog.search("Aramburu", field: :author, library: SAN_PEDRO)
+      by_title = Catalog.search("Patria", field: :title, library: SAN_PEDRO)
+
+      assert by_author.records.all? { it.author&.start_with?("Aramburu") }
+      assert by_title.records.all? { it.title.match?(/patria/i) }
+      assert_operator Catalog.search("Patria", library: SAN_PEDRO).total, :>, by_title.total
+    end
+
     test "returns the requested page" do
       first = Catalog.search("Patria")
       second = Catalog.search("Patria", page: 2)

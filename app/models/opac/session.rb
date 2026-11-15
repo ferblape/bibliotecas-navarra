@@ -1,3 +1,5 @@
+require "net/http"
+
 module Opac
   # A browsing session in the OPAC. The OPAC keeps state (chosen library, last search)
   # on the server, tied to a token in the URL path and to the GN/GNW cookies.

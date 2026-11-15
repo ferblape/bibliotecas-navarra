@@ -1,18 +1,24 @@
+require "net/http"
+
 # The catalog of the Bibliotecas Públicas de Navarra, read live from their OPAC.
 # Answers are cached for a while to keep the load on the OPAC low.
 module Catalog
   class Unavailable < StandardError; end
 
   OPAC_ERRORS = [ Net::HTTPExceptions, Timeout::Error, SocketError, SystemCallError, OpenSSL::SSL::SSLError, EOFError ].freeze
-  SEARCH = { ACC: 131, START: 1, FORM: 1, xindbt: "", xmismo: "on", FORM_DIGITAL: 9, xsface: "on" }.freeze
+  ALL_LIBRARIES = "/"
+  SEARCH = { ACC: 131, START: 1, FORM: 2, xsnf12: 0 }.freeze
+
+  # Fields of the OPAC advanced search form. The OPAC combines several fields unreliably
+  # when a library is chosen, so a search uses one field at a time.
+  FIELDS = { any: :xsqf01, title: :xsqf12, author: :xsqf03, subject: :xsqf05 }.freeze
 
   extend self
 
-  def search(query, library: nil, page: 1)
-    cached [ "search", query, library, page ], expires_in: 10.minutes do
+  def search(query, field: :any, library: nil, page: 1)
+    cached [ "search", query, field, library, page ], expires_in: 10.minutes do
       session = Opac::Session.open(ACC: 101)
-      session.post(ACC: 101, xindbt: "", subcat: library) if library
-      html = session.post(**SEARCH, xsqf01: query)
+      html = session.post(**SEARCH, FIELDS.fetch(field) => query, subcat: library || ALL_LIBRARIES)
       html = session.get(ACC: 161, DOC: (page - 1) * Opac::Results::PER_PAGE + 1) if page > 1
       Opac::ResultsPage.new(html, page:).results
     end
