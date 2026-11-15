@@ -23,6 +23,11 @@
   <body>
     <header class="site-header">
       <%= link_to root_path, class: "site-header__name" do %>
+        <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+          <path class="logo__pages" d="M16 9c-3-2.2-6.5-3-11-3v17c4.5 0 8 .8 11 3 3-2.2 6.5-3 11-3V6c-4.5 0-8 .8-11 3Z" />
+          <path class="logo__spine" d="M16 9v17" />
+          <path class="logo__ribbon" d="M20 6.6v9.4l2-1.6 2 1.6V6.1" />
+        </svg>
         Bibliotecas de Navarra
       <% end %>
       <span class="site-header__tagline">Busca en el catálogo de las Bibliotecas Públicas de Navarra</span>
