@@ -1,0 +1,34 @@
+# Bibliotecas de Navarra
+
+Dónde está cada biblioteca del catálogo y cómo contactar con ella. El código sirve para buscar solo en una biblioteca (`library`). Los horarios cambian según la época: están en la ficha oficial de cada una.
+
+<% { "Bibliotecas públicas" => @public_libraries, "Bibliotecas especializadas" => @specialized_libraries }.each do |title, libraries| %>
+## <%= title %>
+
+<% libraries.each do |library| %>
+### <%== library.name %> (`<%== library.code %>`)
+
+<% if library.locations.empty? %>
+Sin dirección en el directorio de bibliotecas de navarra.es.
+
+<% end %>
+<% library.locations.each do |location| %>
+<% if library.locations.many? %>
+- Sede: <%== location.name %>
+<% end %>
+<% if location.address %>
+- Dirección: <%== location.address %>
+- Cómo llegar: <%== location.map_url %>
+<% end %>
+<% if location.phones.any? %>
+- Teléfono: <%== location.phones.join(", ") %>
+<% end %>
+<% if location.emails.any? %>
+- Correo: <%== location.emails.join(", ") %>
+<% end %>
+- Horario y más: <%== location.url %>
+
+<% end %>
+<% end %>
+<% end %>
+Datos del directorio de bibliotecas de navarra.es: https://www.navarra.es/es/bibliotecas/directorio

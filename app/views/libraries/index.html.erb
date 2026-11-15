@@ -1,0 +1,47 @@
+<% content_for :title, "Bibliotecas · Bibliotecas de Navarra" %>
+
+<h1>Bibliotecas</h1>
+<p class="libraries-intro">
+  Dónde está cada biblioteca del catálogo y cómo contactar con ella. Los horarios cambian según la época del año:
+  consúltalos en la ficha oficial de cada una.
+</p>
+
+<% { "Bibliotecas públicas" => @public_libraries, "Bibliotecas especializadas" => @specialized_libraries }.each do |title, libraries| %>
+  <section class="libraries">
+    <h2><%= title %></h2>
+    <% libraries.each do |library| %>
+      <article class="library" id="<%= library.anchor %>">
+        <h3><%= library.name %></h3>
+        <% if library.locations.empty? %>
+          <p class="library__missing">Sin dirección en el directorio de bibliotecas de navarra.es.</p>
+        <% end %>
+        <% library.locations.each do |location| %>
+          <div class="library__location">
+            <% if library.locations.many? %>
+              <p class="library__branch"><%= location.name %></p>
+            <% end %>
+            <% if location.address %>
+              <address><%= location.address %></address>
+            <% end %>
+            <ul class="library__links">
+              <% if location.map_url %>
+                <li><%= link_to "📍 Cómo llegar", location.map_url, target: "_blank", rel: "noopener" %></li>
+              <% end %>
+              <% location.phones.each do |phone| %>
+                <li><%= link_to "📞 #{phone}", "tel:#{phone.delete("^0-9+")}" %></li>
+              <% end %>
+              <% location.emails.first(1).each do |email| %>
+                <li><%= mail_to email, "✉️ #{email}" %></li>
+              <% end %>
+              <li><%= link_to "Horario y más", location.url, target: "_blank", rel: "noopener" %></li>
+            </ul>
+          </div>
+        <% end %>
+      </article>
+    <% end %>
+  </section>
+<% end %>
+
+<p class="libraries-source">
+  Datos del <%= link_to "directorio de bibliotecas de navarra.es", "https://www.navarra.es/es/bibliotecas/directorio" %>.
+</p>

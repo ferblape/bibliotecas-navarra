@@ -1,0 +1,19 @@
+# Centres of the directory of navarra.es for the libraries of the OPAC whose names do not
+# match, by the slug of their page (https://www.navarra.es/es/w/centro/<slug>). An empty value
+# means the library has no centre in the directory.
+BPN/BP35: biblioteca-del-valle-de-aranguren
+BPN/BP89: biblioteca-de-santesteban
+BPN/BP88:
+  - biblioteca-de-valle-de-egues-sarriguren
+  - biblioteca-de-valle-de-egues-olaz
+BPN/BP36: biblioteca-de-noain-valle-de-elorz-
+BPN/BP19: biblioteca-de-pamplona-txantrea
+BMN/BB1: bibliobus-tierra-estella
+BEN/BAN:
+BEN/BAN/BAAN:
+BEN/BAN/BAGN: biblioteca-del-archivo-real-y-general-de-navarra
+BEN/BDR: biblioteca-de-desarrollo-rural-y-medioambiente
+BEN/BEU: biblioteca-de-euskarabidea-instituto-navarro-del-euskera
+BEN/BME: biblioteca-del-museo-etnologico-de-navarra
+BEN/MYDH: biblioteca-y-centro-documental-del-instituto-navarro-de-la-memoria
+BEN/BZP: biblioteca-y-centro-documental-de-participacion-ciudadana

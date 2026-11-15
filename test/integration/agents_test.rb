@@ -25,6 +25,7 @@ class AgentsTest < ActionDispatch::IntegrationTest
     assert_includes response.body, mcp_url
     assert_includes response.body, "#{root_url}?q="
     assert_includes response.body, "#{root_url}records/"
+    assert_includes response.body, libraries_url(format: :md)
   end
 
   test "lets agents read llms.txt, the agents page and the Markdown pages, and nothing else" do

@@ -1,0 +1,1063 @@
+# Written by `bin/rails libraries:import` from https://www.navarra.es/es/bibliotecas/directorio.
+# Do not edit by hand: fix the centres of a library in config/library_overrides.yml.
+- code: BPN/BP10
+  name: Biblioteca de Navarra - Nafarroako Liburutegia
+  locations:
+  - name: Biblioteca de Navarra
+    address: Paseo Pérez Goyena, 3, 31008 Pamplona / Iruña
+    phones:
+    - '848427797'
+    emails:
+    - bibliotecadenavarra@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-navarra
+- code: BPN/BP57
+  name: Ablitas
+  locations:
+  - name: Biblioteca de Ablitas
+    address: Avenida de Tudela, 27, 31523 Ablitas
+    phones:
+    - '948843030'
+    - '948813623'
+    emails:
+    - bibliabl@navarra.es
+    - biblioteca.ablitas@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-ablitas
+- code: BPN/BP78
+  name: Aibar
+  locations:
+  - name: Biblioteca de Aibar
+    address: Calle Pintor Crispín s/n, 31460 Aibar / Oibar
+    phones:
+    - '948877513'
+    emails:
+    - bibliaib@navarra.es
+    - biblioteca.aibar@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-aibar
+- code: BPN/BP70
+  name: Allo
+  locations:
+  - name: Biblioteca de Allo
+    address: Plaza de los Fueros, 7, 31262 Allo
+    phones:
+    - '948523702'
+    emails:
+    - bibliall@navarra.es
+    - biblioteca.allo@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-allo
+- code: BPN/BP13
+  name: Altsasu/Alsasua
+  locations:
+  - name: Biblioteca de Alsasua
+    address: Centro Cultural Iortia, 31800 Altsasu / Alsasua
+    phones:
+    - '948564834'
+    - 722695449 (Whatsapp)
+    emails:
+    - biblials@navarra.es
+    - biblioteca.alsasua@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-alsasua
+- code: BPN/BP67
+  name: Andosilla
+  locations:
+  - name: Biblioteca de Andosilla
+    address: Calle Sierra de Codés, 3, 31261 Andosilla
+    phones:
+    - '948690332'
+    emails:
+    - bibliand@navarra.es
+    - biblioteca.andosilla@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-andosilla
+- code: BPN/BP11
+  name: Ansoáin / Antsoain
+  locations:
+  - name: Biblioteca de Ansoáin
+    address: Plaza Consistorial, 3, 31013 Ansoain / Antsoain
+    phones:
+    - '948148983'
+    emails:
+    - biblians@navarra.es
+    - biblioteca.ansoain@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-ansoain
+- code: BPN/BP55
+  name: Aoiz
+  locations:
+  - name: Biblioteca de Aoiz
+    address: Plaza José Amichis, s/n, 31430 Aoiz / Agoitz
+    phones:
+    - '948336453'
+    emails:
+    - bibliaoi@navarra.es
+    - biblioteca.aoiz@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-aoiz
+- code: BPN/BP35
+  name: Aranguren, Valle de
+  locations:
+  - name: Biblioteca de Aranguren
+    address: Plaza Eguzki, 31192 Mutilva / Mutiloa
+    phones:
+    - '948290881'
+    emails:
+    - bibliara@navarra.es
+    - biblioteca.aranguren@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-del-valle-de-aranguren
+- code: BPN/BP56
+  name: Arguedas
+  locations:
+  - name: Biblioteca de Arguedas
+    address: Plaza Gral. Clemente, 2, 31513 Arguedas
+    phones:
+    - '948844682'
+    emails:
+    - bibliarg@navarra.es
+    - biblioteca.arguedas@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-arguedas
+- code: BPN/BP71
+  name: Artajona
+  locations:
+  - name: Biblioteca de Artajona
+    address: Calle Mayor, 2, 31140 Artajona
+    phones:
+    - '948364461'
+    emails:
+    - bibliart@navarra.es
+    - biblioteca.artajona@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-artajona
+- code: BPN/BP77
+  name: Aurizberri/Espinal
+  locations:
+  - name: Biblioteca de Aurizberri - Espinal
+    address: Calle San Bartolomé, 76 1º, 31694 Aurizberri / Espinal
+    phones:
+    - '948760123'
+    emails:
+    - bibliesp@navarra.es
+    - biblioteca.espinal@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-espinal
+- code: BPN/BP93
+  name: Ayegui
+  locations:
+  - name: Biblioteca de Ayegui
+    address: Calle Ayuntamiento 1, 31240 Ayegui/Aiegi
+    phones:
+    - '948110070'
+    emails:
+    - biblioteca@ayegui.org
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-ayegui
+- code: BPN/BP28
+  name: Azagra
+  locations:
+  - name: Biblioteca de Azagra
+    address: Calle Entre Ríos, 9, 31560 Azagra
+    phones:
+    - '948692572'
+    - '636762679'
+    emails:
+    - bibliaza@navarra.es
+    - biblioteca.azagra@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-azagra
+- code: BPN/BP14
+  name: Barañáin
+  locations:
+  - name: Biblioteca de Barañáin
+    address: Plaza Lur Gorri, 12-14, 31010 Barañáin / Barañain
+    phones:
+    - '948286628'
+    emails:
+    - biblioba@navarra.es
+    - biblioteca.baranain@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-baranain
+- code: BPN/BP29
+  name: Baztan
+  locations:
+  - name: Biblioteca de Baztan
+    address: Calle Jaime Urrutia 30, 31700 Elizondo
+    phones:
+    - '948581204'
+    emails:
+    - biblibaz@navarra.es
+    - biblioteca.baztan@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-baztan
+- code: BPN/BP40
+  name: Bera
+  locations:
+  - name: Biblioteca de Bera
+    address: Eztegara Pasealekua, 9, 31780 Bera
+    phones:
+    - '948625502'
+    emails:
+    - bibliber@navarra.es
+    - biblioteca.bera@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-bera
+- code: BPN/BP59
+  name: Beriáin
+  locations:
+  - name: Biblioteca de Beriáin
+    address: Plaza Larre, 11, 31191 Beriáin
+    phones:
+    - '948368321'
+    emails:
+    - biblibri@navarra.es
+    - biblioteca.beriain@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-beriain
+- code: BPN/BP58
+  name: Berrioplano / Berriobeiti
+  locations:
+  - name: Biblioteca de Berrioplano - Berriobeiti
+    address: Casa de Cultura María de Maeztu - Camino de la fuente 1, 1ª planta, 31013
+      Artica / Artika
+    phones:
+    - '948382622'
+    emails:
+    - bibliarc@navarra.es
+    - biblioteca.artica@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-artica
+- code: BPN/BP37
+  name: Berriozar
+  locations:
+  - name: Biblioteca de Berriozar
+    address: Plaza Euskal Herria, 5, 31013 Berriozar
+    phones:
+    - '948301765'
+    - '673294400'
+    emails:
+    - biblibrr@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-berriozar
+- code: BPN/BP79
+  name: Buñuel
+  locations:
+  - name: Biblioteca de Buñuel
+    address: Calle San Gregorio, 9, 31540 Buñuel
+    phones:
+    - '638875497'
+    emails:
+    - biblibun@navarra.es
+    - biblioteca.bunuel@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-bunuel
+- code: BPN/BP15
+  name: Burlada
+  locations:
+  - name: Biblioteca de Burlada
+    address: Plaza Ezkabazabal, 6 (entrada por Ronda de las Ventas), 31600 Burlada
+      / Burlata
+    phones:
+    - '948136633'
+    emails:
+    - biblibur@navarra.es
+    - biblioteca.burlada@navarra.es
+    - bibliotecainfantil@burlada.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-burlada
+- code: BPN/BP87
+  name: Cabanillas
+  locations:
+  - name: Biblioteca de Cabanillas
+    address: Calle San Roque s/n, 31511 Cabanillas
+    phones:
+    - '948810463'
+    emails:
+    - bibliocabanillas@yahoo.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-cabanillas
+- code: BPN/BP63
+  name: Caparroso
+  locations:
+  - name: Biblioteca de Caparroso
+    address: Plaza de España, 15, 31380 Caparroso
+    phones:
+    - '948794200'
+    emails:
+    - biblicap@navarra.es
+    - biblioteca.caparroso@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-caparroso
+- code: BPN/BP92
+  name: Cárcar
+  locations:
+  - name: Biblioteca de Cárcar
+    address: Centro cultural La Caja, Calle Mayor 1, 31579 Cárcar
+    phones:
+    - '687138023'
+    emails:
+    - centrocultural@carcar.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-carcar
+- code: BPN/BP50
+  name: Carcastillo
+  locations:
+  - name: Biblioteca de Carcastillo
+    address: Calle Carretera, 40, 31310 Carcastillo
+    phones:
+    - '948725851'
+    emails:
+    - biblicar@navarra.es
+    - biblioteca.carcastillo@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-carcastillo
+- code: BPN/BP30
+  name: Cascante
+  locations:
+  - name: Biblioteca de Cascante
+    address: Calle San Pedro, 3, 31520 Cascante
+    phones:
+    - '948844524'
+    emails:
+    - biblicas@navarra.es
+    - biblioteca.cascante@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-cascante
+- code: BPN/BP80
+  name: Cáseda
+  locations:
+  - name: Biblioteca de Cáseda
+    address: Plaza del Mercado, s/n, 31490 Cáseda
+    phones:
+    - '948434118'
+    emails:
+    - biblicad@navarra.es
+    - biblioteca.caseda@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-caseda
+- code: BPN/BP41
+  name: Castejón
+  locations:
+  - name: Biblioteca de Castejón
+    address: Calle Julián Gayarre, s/n, 31590 Castejón
+    phones:
+    - '948814015'
+    emails:
+    - biblicat@navarra.es
+    - biblioteca.castejon@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-castejon
+- code: BPN/BP31
+  name: Cintruénigo
+  locations:
+  - name: Biblioteca de Cintruénigo
+    address: Calle Pa mplona, 24, 315292 Cintruénigo
+    phones:
+    - '948815718'
+    emails:
+    - biblicin@navarra.es
+    - biblioteca.cintruenigo@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-cintruenigo
+- code: BPN/BP32
+  name: Corella
+  locations:
+  - name: Biblioteca de Corella
+    address: Plaza 8 de marzo, 31591 Corella
+    phones:
+    - '948780577'
+    emails:
+    - biblicor@navarra.es
+    - biblioteca.corella@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-corella
+- code: BPN/BP33
+  name: Cortes
+  locations:
+  - name: Biblioteca de Cortes
+    address: Calle San Miguel, 12, 31530 Cortes
+    phones:
+    - '948800087'
+    emails:
+    - biblicot@navarra.es
+    - biblioteca.cortes@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-cortes
+- code: BPN/BP89
+  name: Doneztebe
+  locations:
+  - name: Biblioteca de Santesteban
+    address: Plaza de los Fueros, 1, 31740 Doneztebe / Santesteban
+    phones:
+    - '948450909'
+    emails:
+    - bibliodoneztebe@yahoo.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-santesteban
+- code: BPN/BP88
+  name: Egües, Valle de
+  locations:
+  - name: Biblioteca de Valle de Egües-Sarriguren
+    address: Calle Bardenas Reales, 78, 31620 Sarriguren (Valle de Egües)
+    phones:
+    - '948788926'
+    emails:
+    - biblioteca-liburutegiasarriguren@egues.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-valle-de-egues-sarriguren
+  - name: Biblioteca de Valle de Egües-Olaz
+    address: Carretera de Huarte, kilómetro 5, 31620 Olaz (Valle de Egües)
+    phones:
+    - '948337974'
+    emails:
+    - biblioteca-liburutegiaolaz@egues.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-valle-de-egues-olaz
+- code: BPN/BP16
+  name: Estella
+  locations:
+  - name: Biblioteca de Estella
+    address: Calle Ruíz de Alda, 34-36, 31200 Estella-Lizarra
+    phones:
+    - '948556419'
+    emails:
+    - bibliest@navarra.es
+    - biblioteca.estella@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-estella-lizarra
+- code: BPN/BP62
+  name: Etxarri Aranatz
+  locations:
+  - name: Biblioteca de Etxarri Aranatz
+    address: Calle Nagusia, 15, 31820 Etxarri Aranatz
+    phones:
+    - '948461181'
+    emails:
+    - biblietx@navarra.es
+    - biblioteca.etxarriaranaz@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-etxarri-aranatz
+- code: BPN/BP73
+  name: Falces
+  locations:
+  - name: Biblioteca de Falces
+    address: Calle Eustaquio Díaz, 1, 31370 Falces
+    phones:
+    - '948734776'
+    emails:
+    - biblifal@navarra.es
+    - biblioteca.falces@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-falces
+- code: BPN/BP54
+  name: Fitero
+  locations:
+  - name: Biblioteca de Fitero
+    address: Plaza de las Malvas, s/n, 31593 Fitero
+    phones:
+    - 848 42 10 95
+    emails:
+    - biblifit@navarra.es
+    - biblioteca.fitero@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-fitero
+- code: BPN/BP74
+  name: Funes
+  locations:
+  - name: Biblioteca de Funes
+    address: Calle Navarro Villoslada, 31360 Funes
+    phones:
+    - '948716095'
+    emails:
+    - biblifun@navarra.es
+    - biblioteca.funes@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-funes
+- code: BPN/BP64
+  name: Fustiñana
+  locations:
+  - name: Biblioteca de Fustiñana
+    address: Plaza de los Fueros, 2, 31510 Fustiñana
+    phones:
+    - '948840350'
+    emails:
+    - biblifus@navarra.es
+    - biblioteca.fustinana@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-fustinana
+- code: BPN/BP17
+  name: Huarte/Uharte
+  locations:
+  - name: Biblioteca de Huarte
+    address: Calle Virgen Blanca, 2, 31620 Huarte / Uharte
+    phones:
+    - '948335043'
+    emails:
+    - biblihua@navarra.es
+    - biblioteca.huarte@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-huarte
+- code: BPN/BP68
+  name: Irurtzun
+  locations:
+  - name: Biblioteca de Irurtzun
+    address: Calle Larraun, 1, 31860 Irurtzun
+    phones:
+    - '675744029'
+    emails:
+    - bibliiru@navarra.es
+    - biblioteca.irurtzun@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-irurtzun
+- code: BPN/BP42
+  name: Leitza
+  locations:
+  - name: Biblioteca de Leitza
+    address: Amazabal s/n, 31880 Leitza
+    phones:
+    - '948510379'
+    - 621248024 (Whatsapp)
+    emails:
+    - biblilei@navarra.es
+    - biblioteca.leitza@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-leitza
+- code: BPN/BP91
+  name: Lekunberri
+  locations:
+  - name: Biblioteca de Lekunberri
+    address: Alde Zaharra, 33, 31870 Lekunberri
+    phones:
+    - '948604582'
+    emails:
+    - mitxausenea.kultura@gmail.com
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-lekunberri
+- code: BPN/BP65
+  name: Lerin
+  locations:
+  - name: Biblioteca de Lerín
+    address: Calle Mayor, 24 - 3º, 31260 Lerín
+    phones:
+    - '948530659'
+    emails:
+    - bibliler@navarra.es
+    - biblioteca.lerin@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-lerin
+- code: BPN/BP39
+  name: Lesaka
+  locations:
+  - name: Biblioteca de Lesaka
+    address: Casa de Cultura Harriondoa, Komentu kalea, 1, 31770 Lesaka
+    phones:
+    - '948637801'
+    - 692150932 (Whatsapp)
+    emails:
+    - bibliles@navarra.es
+    - biblioteca.lesaka@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-lesaka
+- code: BPN/BP43
+  name: Lodosa
+  locations:
+  - name: Biblioteca de Lodosa
+    address: Avenida de la Ribera, 41, 31580 Lodosa
+    phones:
+    - '948694805'
+    emails:
+    - biblilos@navarra.es
+    - biblioteca.lodosa@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-lodosa
+- code: BPN/BP81
+  name: Los Arcos
+  locations:
+  - name: Biblioteca de Los Arcos
+    address: Calle San Lázaro, 2, 31210 Los Arcos
+    phones:
+    - '948640809'
+    emails:
+    - biblilar@navarra.es
+    - biblioteca.losarcos@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-los-arcos-1
+- code: BPN/BP72
+  name: Lumbier
+  locations:
+  - name: Biblioteca de Lumbier
+    address: Calle El Pilar, s/n, 31440 Lumbier
+    phones:
+    - '948880505'
+    emails:
+    - biblilum@navarra.es
+    - biblioteca.lumbier@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-lumbier
+- code: BPN/BP94
+  name: Mañeru
+  locations:
+  - name: Biblioteca de Mañeru
+    address: Plaza de los Fueros, 1, 31130 Mañeru
+    phones:
+    - '948348212'
+    emails:
+    - bibliomaneru@yahoo.es
+    - bibliomaneru@gmail.com
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-maneru
+- code: BPN/BP75
+  name: Marcilla
+  locations:
+  - name: Biblioteca de Marcilla
+    address: Plaza de la Cava, 1, 31340 Marcilla
+    phones:
+    - '948757403'
+    emails:
+    - biblimar@navarra.es
+    - biblioteca.marcilla@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-marcilla
+- code: BPN/BP82
+  name: Mélida
+  locations:
+  - name: Biblioteca de Mélida
+    address: Calle La Oliva, 2, 31382 Mélida
+    phones:
+    - '948746802'
+    emails:
+    - biblimel@navarra.es
+    - biblioteca.melida@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-melida
+- code: BPN/BP18
+  name: Mendavia
+  locations:
+  - name: Biblioteca de Mendavia
+    address: Plaza del ayuntamiento, 1, 31587 Mendavia
+    phones:
+    - '948685803'
+    - 602228233 (Whatsapp)
+    emails:
+    - biblimen@navarra.es
+    - biblioteca.mendavia@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-mendavia
+- code: BPN/BP86
+  name: Mendigorria
+  locations:
+  - name: Biblioteca de Mendigorria
+    address: Calle La Verdura, 31150 Mendigorria
+    phones:
+    - '948343063'
+    emails:
+    - biblimed@navarra.es
+    - biblioteca.mendigorria@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-mendigorria
+- code: BPN/BP60
+  name: Milagro
+  locations:
+  - name: Biblioteca de Milagro
+    address: Avenida San Juan 1 A, 31320 Milagro
+    phones:
+    - '948409239'
+    emails:
+    - biblimlg@navarra.es
+    - biblioteca.milagro@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-milagro
+- code: BPN/BP83
+  name: Miranda de Arga
+  locations:
+  - name: Biblioteca de Miranda de Arga
+    address: Plaza de los Fueros, 1, 31253 Miranda de Arga
+    phones:
+    - '948737312'
+    emails:
+    - biblimda@navarra.es
+    - biblioteca.mirandadearga@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-miranda-de-arga
+- code: BPN/BP84
+  name: Monteagudo
+  locations:
+  - name: Biblioteca de Monteagudo
+    address: Calle Huerto Mayor, 7, 31522 Monteagudo
+    phones:
+    - '948816714'
+    emails:
+    - biblimon@navarra.es
+    - biblioteca.monteagudo@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-monteagudo
+- code: BPN/BP44
+  name: Murchante
+  locations:
+  - name: Biblioteca de Murchante
+    address: Calle Fernando Mardones y Angulo, 31521 Murchante
+    phones:
+    - '948838684'
+    - 674063599 (solo Whatsapp)
+    emails:
+    - biblimur@navarra.es
+    - biblioteca.murchante@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-murchante
+- code: BPN/BP36
+  name: Noáin
+  locations:
+  - name: Biblioteca de Noáin (Valle de Elorz)
+    address: Calle Real, 10, 31110 Noáin (Valle de Elorz) / Noain (Elortzibar)
+    phones:
+    - '948312149'
+    - 667800978 (Whatsapp)
+    emails:
+    - biblinoa@navarra.es
+    - biblioteca.noain@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-noain-valle-de-elorz-
+- code: BPN/BP69
+  name: Olazti/Olazagutia
+  locations:
+  - name: Biblioteca de Olazagutia
+    address: Calle Orreaga, 3-5, 31809 Olazti / Olazagutia
+    phones:
+    - '948371444'
+    emails:
+    - bibliola@navarra.es
+    - biblioteca.olazagutia@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-olazagutia
+- code: BPN/BP45
+  name: Olite
+  locations:
+  - name: Biblioteca de Olite
+    address: Rua Mayor, 37, 31390 Olite / Erriberri
+    phones:
+    - '948740772'
+    emails:
+    - biblioli@navarra.es
+    - biblioteca.olite@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-olite
+- code: BPN/BP95
+  name: Oteiza
+  locations:
+  - name: Biblioteca de Oteiza
+    address: Calle San Isidro, 10, 31250 Oteiza
+    phones:
+    - '948536203'
+    emails:
+    - biblioteca@oteiza.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-oteiza
+- code: BPN/BP19
+  name: Pamplona-Chantrea
+  locations:
+  - name: Biblioteca de Pamplona-Txantrea
+    address: Plaza Arriurdiñeta, 4, 31015 Pamplona / Iruña
+    phones:
+    - '948149882'
+    emails:
+    - biblioteca.txantrea@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-txantrea
+- code: BPN/BP38
+  name: Pamplona-Civican
+  locations:
+  - name: Biblioteca de Pamplona-Civican
+    address: Avenida Pío XII, 2, 31008 Pamplona / Iruña
+    phones:
+    - '948222444'
+    emails:
+    - bibliotecacivican@fundacioncajanavarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-civican
+- code: BPN/BP34
+  name: Pamplona-Echavacoiz
+  locations:
+  - name: Biblioteca de Pamplona-Echavacoiz
+    address: Grupo Urdanoz. Avenida Aróstegui, s/n, 31009 Pamplona / Iruña
+    phones:
+    - '948273262'
+    emails:
+    - bibliech@navarra.es
+    - biblioteca.echavacoiz@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-echavacoiz
+- code: BPN/BP52
+  name: Pamplona-Iturrama
+  locations:
+  - name: Biblioteca de Pamplona-Iturrama
+    address: Calle Esquíroz, 24, 31007 Pamplona / Iruña
+    phones:
+    - '948198987'
+    emails:
+    - biblitur@navarra.es
+    - biblioteca.iturrama@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-iturrama
+- code: BPN/BP53
+  name: Pamplona-Mendillorri
+  locations:
+  - name: Biblioteca de Pamplona-Mendillorri
+    address: Calle Concejo de Sarriguren, 3, 31016 Pamplona / Iruña
+    phones:
+    - '948162847'
+    emails:
+    - biblimdl@navarra.es
+    - biblioteca.mendillorri@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-mendillorri
+- code: BPN/BP26
+  name: Pamplona-Milagrosa
+  locations:
+  - name: Biblioteca de Pamplona-Milagrosa
+    address: Calle Isaac Albéniz, 8 bajo, 31005 Pamplona / Iruña
+    phones:
+    - '948245460'
+    emails:
+    - biblimil@navarra.es
+    - biblioteca.milagrosa@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-milagrosa
+- code: BPN/BP76
+  name: Pamplona-San Francisco
+  locations:
+  - name: Biblioteca de Pamplona-San Francisco
+    address: Plaza San Francisco s/n, 31001 Pamplona / Iruña
+    phones:
+    - '948210524'
+    emails:
+    - biblisfr@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-san-francisco
+- code: BPN/BP51
+  name: Pamplona-San Jorge
+  locations:
+  - name: Biblioteca de Pamplona-San Jorge
+    address: Calle Doctor Gortari, 2, 31012 Pamplona / Iruña
+    phones:
+    - '948125108'
+    emails:
+    - biblisjo@navarra.es
+    - biblioteca.pamplona.sanjorge@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-san-jorge
+- code: BPN/BP21
+  name: Pamplona-San Pedro
+  locations:
+  - name: Biblioteca de Pamplona-San Pedro
+    address: Calle Virgen del Río, s/n, 31014 Pamplona / Iruña
+    phones:
+    - '948136664'
+    emails:
+    - biblispe@navarra.es
+    - biblioteca.sanpedro@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-san-pedro
+- code: BPN/BP20
+  name: Pamplona-Yamaguchi
+  locations:
+  - name: Biblioteca de Pamplona-Yamaguchi
+    address: Plaza Yamaguchi, 12, 31008 Pamplona / Iruña
+    phones:
+    - '948264028'
+    emails:
+    - bibliyam@navarra.es
+    - biblioteca.yamaguchi@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-yamaguchi
+- code: BPN/BP46
+  name: Peralta
+  locations:
+  - name: Biblioteca de Peralta
+    address: Calle Tremoya, 3, 31350 Peralta / Azkoien
+    phones:
+    - '948753210'
+    emails:
+    - bibliper@navarra.es
+    - biblioteca.peralta@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-peralta
+- code: BPN/BP66
+  name: Puente la Reina/Gares
+  locations:
+  - name: Biblioteca de Puente la Reina
+    address: Plaza Mena s/n, 31100 Puente la Reina / Gares
+    phones:
+    - '948341281'
+    emails:
+    - biblipue@navarra.es
+    - biblioteca.puentelareina@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-puente-la-reina
+- code: BPN/BP47
+  name: Ribaforada
+  locations:
+  - name: Biblioteca de Ribaforada
+    address: Plaza San Francisco, 2, 31550 Ribaforada
+    phones:
+    - '948819266'
+    emails:
+    - biblirib@navarra.es
+    - biblioteca.ribaforada@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-ribaforada
+- code: BPN/BP85
+  name: Roncal
+  locations:
+  - name: Biblioteca de Roncal
+    address: Calle Julián Gayarre, 1, 31415 Roncal / Erronkari
+    phones:
+    - '948475173'
+    emails:
+    - bibliron@navarra.es
+    - biblioteca.roncal@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-roncal
+- code: BPN/BP48
+  name: San Adrián
+  locations:
+  - name: Biblioteca de San Adrián
+    address: Avenida de la Paz, 4, 31570 San Adrián
+    phones:
+    - '673832655'
+    emails:
+    - biblisad@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-san-adrian
+- code: BPN/BP22
+  name: Sangüesa
+  locations:
+  - name: Biblioteca de Sangüesa
+    address: Calle San Miguel, 66, 31400 Sangüesa / Zangoza
+    phones:
+    - '948871417'
+    emails:
+    - biblisan@navarra.es
+    - biblioteca.sanguesa@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-sanguesa
+- code: BPN/BP90
+  name: Sartaguda
+  locations:
+  - name: Biblioteca de Sartaguda
+    address: Calle Arriba, 2, 31589 Sartaguda
+    phones:
+    - '948697416'
+    emails:
+    - bibliosartaguda@yahoo.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-sartaguda
+- code: BPN/BP27
+  name: Tafalla
+  locations:
+  - name: Biblioteca de Tafalla
+    address: Calle San Juan, 1, 31300 Tafalla
+    phones:
+    - '948703933'
+    emails:
+    - biblitaf@navarra.es
+    - biblioteca.tafalla@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-tafalla
+- code: BPN/BP23
+  name: Tudela
+  locations:
+  - name: Biblioteca de Tudela
+    address: Calle Herrerías, 14, 31500 Tudela
+    phones:
+    - '948848083'
+    - 683261455 (solo Whatsapp)
+    emails:
+    - biblitud@navarra.es
+    - biblioteca.tudela@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-tudela
+- code: BPN/BP12
+  name: Valtierra
+  locations:
+  - name: Biblioteca de Valtierra
+    address: Plaza de los Derechos Humanos, 10, 31514 Valtierra
+    phones:
+    - '948407754'
+    emails:
+    - biblival@navarra.es
+    - biblioteca.valtierra@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-valtierra
+- code: BPN/BP49
+  name: Viana
+  locations:
+  - name: Biblioteca de Viana
+    address: Calle Navarro Villoslada, 26, 31230 Viana
+    phones:
+    - '948645249'
+    emails:
+    - biblivia@navarra.es
+    - biblioteca.viana@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-viana
+- code: BPN/BP61
+  name: Villafranca
+  locations:
+  - name: Biblioteca de Villafranca
+    address: Calle Cava, 33 - 3º, 31330 Villafranca
+    phones:
+    - '672083237'
+    emails:
+    - biblivfr@navarra.es
+    - biblioteca.villafranca@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-villafranca
+- code: BPN/BP24
+  name: Villava
+  locations:
+  - name: Biblioteca de Villava
+    address: Calle Mayor, 38, 31610 Villava / Atarrabia
+    phones:
+    - '948335042'
+    emails:
+    - biblivil@navarra.es
+    - biblioteca.villava@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-villava
+- code: BPN/BP25
+  name: Zizur Mayor
+  locations:
+  - name: Biblioteca de Zizur Mayor
+    address: Parque Erreniega, 25, 31180 Zizur Mayor
+    phones:
+    - 948286629 (también whatsapp)
+    emails:
+    - bibliziz@navarra.es
+    - biblioteca.zizur@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-zizur-mayor
+- code: BEN/BAN
+  name: Archivo de Navarra
+  locations: []
+- code: BEN/BAN/BAAN
+  name: Archivo Administrativo
+  locations: []
+- code: BEN/BAN/BAGN
+  name: Archivo General
+  locations:
+  - name: Biblioteca del Archivo Real y General de Navarra
+    address: Calle Dos de Mayo, s/n, 31001 Pamplona / Iruña
+    phones:
+    - '848424606'
+    - '848424667'
+    emails:
+    - mlosarcs@navarra.es
+    - archivogeneral@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-del-archivo-real-y-general-de-navarra
+- code: BEN/BCM
+  name: Ciudad de la Música
+  locations:
+  - name: Biblioteca de la Ciudad de la Música
+    address: Paseo Antonio Pérez Goyena, 1, 31008 Pamplona / Iruña
+    phones:
+    - '848421117'
+    emails:
+    - bibciudmus@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-la-ciudad-de-la-musica
+- code: BEN/BDR
+  name: Desarrollo Rural
+  locations:
+  - name: Biblioteca de Desarrollo Rural y Medio Ambiente
+    address: Calle González Tablas, 9, 31005 Pamplona / Iruña
+    phones:
+    - '848426659'
+    emails:
+    - bibliodesarrollorural@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-desarrollo-rural-y-medioambiente
+- code: BEN/BEU
+  name: Euskarabidea
+  locations:
+  - name: Biblioteca de Euskarabidea - Instituto Navarro del Euskera
+    address: Calle Paulino Caballero, 13, 31002 Pamplona / Iruña
+    phones:
+    - '848426054'
+    emails:
+    - euskarabidea@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-de-euskarabidea-instituto-navarro-del-euskera
+- code: BEN/BMN
+  name: Museo de Navarra
+  locations:
+  - name: Biblioteca del Museo de Navarra
+    address: Calle Santo Domingo, 47, 31001 Pamplona / Iruña
+    phones:
+    - '848426494'
+    emails:
+    - bmuseona@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-del-museo-de-navarra
+- code: BEN/BMC
+  name: Museo del Carlismo
+  locations:
+  - name: Biblioteca del Museo del Carlismo
+    address: Calle de la Rúa, 27-29, 31200 Estella - Lizarra
+    phones:
+    - '948552111'
+    emails:
+    - museo.carlismo@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-del-museo-del-carlismo
+- code: BEN/BME
+  name: Museo Etnológico
+  locations:
+  - name: Biblioteca del Museo Etnológico de Navarra
+    address: Calle Merkatondoa, 13 nave 4, 31200 Estella - Lizarra
+    phones:
+    - '948553556'
+    emails:
+    - biblioet@navarra.es
+    - museo.etnologico.navarra@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-del-museo-etnologico-de-navarra
+- code: BEN/MYDH
+  name: Paz Convivencia y Derechos Humanos
+  locations:
+  - name: Biblioteca y Centro Documental del Instituto Navarro de la Memoria
+    address: Navarrerría, 17 3ª planta, 31001 Pamplona / Iruña
+    phones:
+    - '848425201'
+    emails:
+    - inm.biblioteca@navarra.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-y-centro-documental-del-instituto-navarro-de-la-memoria
+- code: BEN/BZP
+  name: Zentro-Biblioteca de Participación
+  locations:
+  - name: Biblioteca y Centro Documental de Participación Ciudadana
+    address: '"Zentro" Palacio Condestable, calle Mayor, 2, 31001 Pamplona / Iruña'
+    phones:
+    - '948420468'
+    emails:
+    - biblioteca.participacion@pamplona.es
+    url: https://www.navarra.es/es/w/centro/biblioteca-y-centro-documental-de-participacion-ciudadana
+- code: BMN/BB1
+  name: Bibliobús 1 (Tierra Estella)
+  locations:
+  - name: Bibliobús Tierra Estella
+    address: Paseo Pérez Goyena, 3, 31008 Pamplona / Iruña
+    phones:
+    - 626 676 085
+    emails:
+    - bibliobus@navarra.es
+    url: https://www.navarra.es/es/w/centro/bibliobus-tierra-estella

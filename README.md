@@ -10,6 +10,7 @@ No es un servicio oficial del Gobierno de Navarra ni de sus bibliotecas. Cada b�
 - Muestra cada ficha con sus ejemplares por biblioteca y su disponibilidad, la biblioteca elegida primero, y enlaza a la ficha oficial.
 - Guarda favoritos en una lista anónima: no hay cuentas, la dirección secreta `/listas/<token>` es la llave. Quien la conoce puede verla y cambiarla.
 - Enseña en la portada los últimos libros visitados en este navegador.
+- Lista las bibliotecas con su dirección, un enlace a Google Maps, teléfono, correo y su ficha oficial (`/bibliotecas`).
 - Ofrece el catálogo a agentes de IA por MCP (ver más abajo).
 
 En producción: https://bibliotecas-navarra.fly.dev
@@ -21,6 +22,13 @@ El OPAC es un AbsysNet sin API: la app abre una sesión, envía los formularios 
 - `app/models/opac/`: `Opac::Session` abre y cierra sesiones del OPAC; `ResultsPage`, `RecordPage` y `LibrariesPage` leen sus páginas.
 - `app/models/catalog.rb`: la fachada que usa la app. Cachea búsquedas y fichas 10 minutos y la lista de bibliotecas un día. Si el OPAC falla, la app muestra "catálogo no disponible".
 - `List` y `Bookmark`: las listas de favoritos, en SQLite. Los libros visitados van en una cookie firmada (`RecentRecords`).
+- `LibraryDirectory`: dónde está cada biblioteca, leído de `config/libraries.yml` (ver abajo).
+
+### Direcciones de las bibliotecas
+
+Vienen del [directorio de bibliotecas de navarra.es](https://www.navarra.es/es/bibliotecas/directorio) y se guardan en `config/libraries.yml`, versionado en el repo. `bin/rails libraries:import` lo regenera: lee el directorio, empareja cada centro con su biblioteca del OPAC por el nombre y baja la dirección, los teléfonos y los correos de su ficha. Las bibliotecas cuyos nombres no coinciden se emparejan a mano en `config/library_overrides.yml`. No se copian los horarios, porque cambian según la época: la página enlaza a la ficha oficial.
+
+La importación no se ejecuta al desplegar. La GitHub Action `Refresh libraries` la lanza el día 1 de cada mes y abre una PR si algo ha cambiado; también se puede lanzar a mano desde la pestaña Actions.
 
 Para cargar poco el OPAC: caché, cada sesión se cierra en cuanto se lee la respuesta, límite de 30 peticiones por minuto por visitante y respuesta 403 a buscadores y crawlers (`lib/middleware/block_crawlers.rb`). El OPAC rechaza sesiones nuevas ("Error 205") si hay demasiadas abiertas.
 

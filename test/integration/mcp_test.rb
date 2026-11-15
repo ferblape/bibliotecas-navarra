@@ -44,10 +44,15 @@ class McpTest < ActionDispatch::IntegrationTest
     assert_response :method_not_allowed
   end
 
-  test "lists the libraries" do
+  test "lists the libraries with where they are" do
     result = call_tool("list_libraries")
 
-    assert_equal({ libraries: [ { code: "BPN/BP21", name: "Pamplona-San Pedro" } ] }, result[:structuredContent])
+    library = result[:structuredContent][:libraries].sole
+    assert_equal [ "BPN/BP21", "Pamplona-San Pedro" ], library.values_at(:code, :name)
+    location = library[:locations].sole
+    assert_equal "Calle Virgen del Río, s/n, 31014 Pamplona / Iruña", location[:address]
+    assert_equal [ "948136664" ], location[:phones]
+    assert_match %r{\Ahttps://www.google.com/maps/search/}, location[:map_url]
   end
 
   test "searches the catalog" do

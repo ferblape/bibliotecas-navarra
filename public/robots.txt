@@ -4,6 +4,7 @@
 User-agent: *
 Allow: /llms.txt
 Allow: /agentes
+Allow: /bibliotecas
 Allow: /mcp
 Allow: /*.md$
 Allow: /*format=md

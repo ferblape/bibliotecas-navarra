@@ -91,6 +91,7 @@ class CatalogSearchTest < ActionDispatch::IntegrationTest
       assert_select "a[href='https://www.navarra.es/opac/abnetcl.exe?TITN=554980']"
       assert_select ".copies details[open]", 1
       assert_select ".copies details[open] summary", /Pamplona-San Pedro/
+      assert_select ".copies details[open] summary a[href='#{libraries_path(anchor: "bpn-bp21")}']"
       assert_select ".copies details:not([open])", minimum: 10
     end
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :records, only: :show do
     resource :bookmark, only: %i[ create destroy ], module: :records
   end
+  resources :libraries, path: "bibliotecas", only: :index
   resources :lists, path: "listas", only: :show do
     resource :selection, only: %i[ create destroy ], module: :lists
   end

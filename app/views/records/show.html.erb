@@ -35,7 +35,13 @@
   <% copies.sort_by { |code, library_copies| [ code == library&.copies_code ? 0 : 1, library_copies.first.library_name ] }.each do |code, library_copies| %>
     <details <%= "open" if code == library&.copies_code %>>
       <summary>
-        <span><%= library_copies.first.library_name %></span>
+        <% directory_library = LibraryDirectory.find_by_copies_code(code) %>
+        <span>
+          <%= library_copies.first.library_name %>
+          <% if directory_library&.locations&.any? %>
+            <%= link_to "Dirección", libraries_path(anchor: directory_library.anchor), class: "copies__address" %>
+          <% end %>
+        </span>
         <span class="availability <%= "availability--available" if library_copies.any?(&:available?) %>">
           <%= library_copies.count(&:available?) %> de <%= library_copies.size %> disponibles
         </span>
