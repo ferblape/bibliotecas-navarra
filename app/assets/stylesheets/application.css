@@ -50,11 +50,12 @@ h1, h2 { line-height: 1.25; }
 
 .site-header {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem 1rem;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1.5rem 0 1rem;
 }
+
+.site-header__brand { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
 
 .site-header__name {
   display: inline-flex;
@@ -77,8 +78,9 @@ h1, h2 { line-height: 1.25; }
   .logo__ribbon { transition: none; }
 }
 
-.site-header__tagline { color: var(--muted); font-size: 0.95rem; }
-.site-header__list { margin-left: auto; font-weight: 600; }
+/* Lined up with the name, after the logo. */
+.site-header__tagline { color: var(--muted); font-size: 0.85rem; padding-left: 2.4rem; }
+.site-header__list { margin-left: auto; flex: none; padding-top: 0.3rem; font-weight: 600; }
 
 .notice {
   padding: 0.75rem 1rem;
@@ -377,7 +379,7 @@ h1, h2 { line-height: 1.25; }
 @media (max-width: 40rem) {
   .site-header { padding: 1rem 0 0.75rem; }
   .site-header__name { font-size: 1.2rem; }
-  .site-header__tagline { flex-basis: 100%; order: 1; font-size: 0.85rem; }
+  .site-header__tagline { padding-left: 0; font-size: 0.8rem; }
 
   /* Fingers need bigger targets than pointers. */
   .button, .search-form button, .search-form select, .search-form input { min-height: 2.75rem; }
