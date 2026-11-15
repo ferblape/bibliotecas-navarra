@@ -60,10 +60,14 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Final stage for app image
 FROM base
 
-# Run and own only the runtime files as a non-root user for security
+# Run and own only the runtime files as a non-root user for security.
+# bin/docker-entrypoint starts as root to take ownership of the storage volume
+# and then switches to this user.
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash
-USER 1000:1000
+
+# Litestream backs up the SQLite databases while the server runs
+COPY --from=docker.io/litestream/litestream:0.5.14 /usr/local/bin/litestream /usr/local/bin/litestream
 
 # Copy built artifacts: gems, application
 COPY --chown=rails:rails --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"

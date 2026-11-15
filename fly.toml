@@ -1,0 +1,37 @@
+# Fly.io configuration, see docs/deploy.md.
+app = "bibliotecas-navarra"
+# Fly has no region in Spain. Paris is the closest.
+primary_region = "cdg"
+# Leave time for Puma to finish requests and Litestream to sync its last changes.
+kill_timeout = 60
+swap_size_mb = 512
+
+[env]
+  # The server runs as the rails user, which cannot bind ports below 1024.
+  HTTP_PORT = "8080"
+
+# SQLite databases live on this volume. A volume belongs to one machine, so the
+# app runs on a single one.
+[[mounts]]
+  source = "storage"
+  destination = "/rails/storage"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # Stop the machine when idle and start it on the next request. The volume
+  # keeps the databases while it is stopped.
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    grace_period = "15s"
+    interval = "30s"
+    method = "GET"
+    path = "/up"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
