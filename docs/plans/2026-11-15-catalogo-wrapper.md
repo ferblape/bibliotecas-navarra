@@ -15,8 +15,8 @@ No es un servicio oficial. Cada búsqueda consulta el OPAC en vivo; no copiamos 
 - Biblioteca: POST al `action` del formulario `subform` con `ACC=101&xindbt=&subcat=<código>`. Queda guardada en la sesión. Códigos en el `<select name="subcat">` (p. ej. `BPN/BP21` = Pamplona-San Pedro).
 - Búsqueda: POST al `action` del formulario `abnformSearch` con `ACC=131&START=1&FORM=1&xindbt=&xmismo=on&FORM_DIGITAL=9&xsface=on&xsqf01=<términos>`.
 - Resultados: `ol.c-docs > li.c-docs_unit`. Clases `c-docs_author`, `c-docs_title`, `c-docs_titleRest`, `c-docs_data` (editorial, ISBN). Bloque oculto `p.c-docs_marc` con spans `js-TITN` (ID del registro), `js-T020a` (ISBN), `js-FEPU` (año), `js-LENG` (idioma), `js-ld06`/`js-ld07` (tipo de material). Contador "N / M de T" en `p.c-paginator_count`.
-- Ficha: enlace `ACC=165&DOC=n` de la lista. Ejemplares con biblioteca, sucursal, localización, estado, signatura, soporte y disponibilidad.
-- Enlace permanente sin sesión: `https://www.navarra.es/opac/abnetcl.exe?TITN=<id>`.
+- Paginación: `GET <sesión>?ACC=161&DOC=<n>` (n = primer registro de la página, 10 por página) en la misma sesión de la búsqueda.
+- Ficha: `GET /opac/abnetcl.exe?TITN=<id>` devuelve un meta-refresh a una sesión nueva con la ficha completa, con los ejemplares de todas las bibliotecas (`div.copias_data`, `h3#copias_bib<código>`, `table[data-bidesc][data-sudesc]`, `tr[data-disp]`). No depende de la sesión de búsqueda; el filtro por biblioteca se hace en Ruby. Ese mismo enlace es el enlace permanente a la ficha oficial.
 - `robots.txt` de navarra.es no bloquea `/opac`.
 
 ## Alcance de la primera versión
@@ -32,8 +32,8 @@ No es un servicio oficial. Cada búsqueda consulta el OPAC en vivo; no copiamos 
 
 - Rails 8.1, Ruby 4.0, SQLite (solo para Solid Cache), Minitest, Propshaft, Importmap.
 - `Opac::Session`: abre sesión, guarda token y cookies, hace GET/POST en ISO-8859-1.
-- `Opac::ResultsPage` y `Opac::RecordPage`: parsean HTML con Nokogiri y devuelven objetos `Data` (`Record`, `Copy`).
-- `Catalog`: la fachada que usa la app. `Catalog.search(query, library:, page:)` y `Catalog.record(id, library:)`. Cachea respuestas unos minutos con `Rails.cache`.
+- `Opac::ResultsPage`, `Opac::RecordPage` y `Opac::LibrariesPage`: parsean HTML con Nokogiri y devuelven objetos `Data` (`Results`, `Record`, `Copy`, `Library`). Los campos salen del bloque MARC oculto (`Opac::MarcFields`).
+- `Catalog`: la fachada que usa la app. `Catalog.search(query, library:, page:)` y `Catalog.record(id)`; la vista filtra los ejemplares con `Library#copies_code`. Cachea respuestas unos minutos con `Rails.cache`.
 - La lista de bibliotecas se lee del `<select>` del OPAC y se cachea un día.
 - Controladores `SearchesController` y `RecordsController`. HTML con Turbo; sin JS propio salvo que haga falta.
 
@@ -49,6 +49,18 @@ No es un servicio oficial. Cada búsqueda consulta el OPAC en vivo; no copiamos 
 - Parsers: fixtures con HTML real descargado del OPAC (`test/fixtures/files/opac/`).
 - `Opac::Session` y `Catalog`: tests de integración contra el OPAC real, marcados para poder saltarlos sin red (`OPAC_LIVE=1`).
 - Controladores y sistema: con fixtures HTML servidas por un `Catalog` de test que lee de disco.
+
+## Estado (2026-11-15)
+
+Hecho:
+- App Rails generada (Ruby 4.0.9, Rails 8.1.3; sin mailer, mailbox, action text, active storage, cable, jobs ni kamal).
+- Parsers en `app/models/opac/` con tests sobre HTML real (`test/fixtures/files/opac/`). `bin/rails test` y `bin/rubocop` en verde.
+
+Siguiente, en este orden (TDD):
+1. `Opac::Session`: GET de entrada, seguir el meta-refresh, guardar ruta con token y cookies `GN`/`GNW`, GET/POST en ISO-8859-1 devolviendo UTF-8, User-Agent propio. Test de integración contra el OPAC real con `OPAC_LIVE=1`.
+2. `Catalog` con `Rails.cache`.
+3. `SearchesController` (raíz) y `RecordsController`, vistas, biblioteca recordada en cookie.
+4. `rate_limit`, pie con fuente y aviso de servicio no oficial.
 
 ## Pendiente
 
