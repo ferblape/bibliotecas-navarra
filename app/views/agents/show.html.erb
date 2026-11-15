@@ -1,0 +1,40 @@
+<% content_for :title, "Para agentes de IA · Bibliotecas de Navarra" %>
+
+<article class="agents">
+  <h1>Para agentes de IA</h1>
+  <p>
+    Un agente de IA (Claude, ChatGPT y otros) puede buscar en el catálogo y decirte dónde hay ejemplares
+    disponibles, igual que esta web. Es un servicio abierto a todos: no lo uses para descargar el catálogo entero.
+  </p>
+
+  <h2>Con MCP</h2>
+  <p>Conecta el agente a este servidor MCP. No hace falta cuenta ni clave:</p>
+  <p><code class="agents__url"><%= mcp_url %></code></p>
+  <ul>
+    <li><strong>Claude Code:</strong> <code>claude mcp add --transport http bibliotecas-navarra <%= mcp_url %></code></li>
+    <li><strong>claude.ai o Claude Desktop:</strong> Ajustes → Conectores → Añadir conector personalizado, con la dirección de arriba.</li>
+    <li><strong>Otros clientes:</strong> cualquier cliente MCP con transporte HTTP («Streamable HTTP»), con la misma dirección.</li>
+  </ul>
+  <p>El agente tiene tres herramientas:</p>
+  <ul>
+    <li><code>list_libraries</code>: las bibliotecas y el código de cada una.</li>
+    <li><code>search_catalog</code>: busca por cualquier campo, título, autor o materia, en todas las bibliotecas o en una.</li>
+    <li><code>get_record</code>: una ficha con sus ejemplares, la biblioteca de cada uno y si está disponible.</li>
+  </ul>
+
+  <h2>Sin MCP</h2>
+  <p>
+    Los agentes que solo leen páginas web tienen las instrucciones en <%= link_to "/llms.txt", "/llms.txt" %> y las búsquedas y fichas
+    en Markdown, sin menús ni estilos. Por ejemplo:
+  </p>
+  <ul>
+    <li><%= link_to root_url(q: "Patria", format: "md"), root_url(q: "Patria", format: "md") %></li>
+    <li><%= link_to record_url("554980", format: :md), record_url("554980", format: :md) %></li>
+  </ul>
+
+  <h2>Límites</h2>
+  <p>
+    Cada consulta nueva abre una sesión en el catálogo de las bibliotecas, que no aguanta mucha carga. Por eso las respuestas
+    se guardan unos minutos y hay un límite de peticiones: 10 por minuto para cada agente por MCP y 60 entre todos.
+  </p>
+</article>

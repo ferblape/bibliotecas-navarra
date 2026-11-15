@@ -1,0 +1,25 @@
+# <%== @record.title %>
+<% if @record.responsibility %>
+
+<%== @record.responsibility %>
+<% end %>
+
+<% { "Autor" => @record.author, "Publicación" => @record.publication, "ISBN" => @record.isbn, "Tipo" => @record.material }.compact.each do |label, value| %>
+- <%= label %>: <%== value %>
+<% end %>
+- Ficha oficial: <%== @record.opac_url %>
+- En esta web: <%== record_url(@record.id) %>
+
+## Ejemplares
+
+<% if @record.copies.empty? %>
+No hay ejemplares.
+<% end %>
+<% @record.copies.group_by(&:library_name).sort.each do |library_name, copies| %>
+### <%== library_name %> — <%= copies.count(&:available?) %> de <%= copies.size %> disponibles
+
+<% copies.each do |copy| %>
+- <%== [ copy.branch, copy.location, copy.call_number, copy.status, copy.availability ].join(" · ") %>
+<% end %>
+
+<% end %>

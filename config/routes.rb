@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resource :selection, only: %i[ create destroy ], module: :lists
   end
 
+  # How to use the catalog from an AI agent: a page for people and llms.txt for the agents.
+  get "agentes" => "agents#show", as: :agents
+  get "llms.txt" => "agents#show", format: false, defaults: { format: :md }
+
   # The catalog for AI agents, over the Model Context Protocol (Streamable HTTP). The protocol
   # also uses GET and DELETE on the same URL, and the MCP transport answers them.
   match "mcp" => "mcp#create", via: %i[ get post delete ]

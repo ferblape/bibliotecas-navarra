@@ -1,0 +1,27 @@
+<% if @results %>
+# Resultados de «<%== params[:q] %>»<%== " en #{library.name}" if library %>
+
+<% if @results.records.any? %>
+<%= number_es @results.total %> resultados · página <%= @results.page %> de <%= number_es @results.total_pages %>
+
+<% @results.records.each.with_index((@results.page - 1) * Opac::Results::PER_PAGE + 1) do |record, position| %>
+<%= position %>. [<%== record.title %>](<%== record_url(record.id, format: :md) %>)<%== " — #{record.author}" if record.author %>. <%== [ record.publication, record.isbn && "ISBN #{record.isbn}", record.material ].compact.join(" · ") %>
+<% end %>
+<% if @results.next_page? %>
+
+Página siguiente: <%== url_for(request.query_parameters.merge(page: @results.page + 1, only_path: false)) %>
+<% end %>
+<% else %>
+No hay resultados.
+<% end %>
+<% else %>
+# Bibliotecas de Navarra
+
+Busca con `<%== root_url %>?q=TÉRMINOS&format=md`. Más detalles en <%== root_url %>llms.txt
+
+## Bibliotecas y sus códigos
+
+<% @libraries.each do |library| %>
+- <%== library.name %>: `<%== library.code %>`
+<% end %>
+<% end %>

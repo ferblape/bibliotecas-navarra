@@ -4,11 +4,12 @@ class CrawlersTest < ActionDispatch::IntegrationTest
   GOOGLEBOT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
   FIREFOX = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14.5; rv:132.0) Gecko/20100101 Firefox/132.0"
 
-  test "robots.txt disallows everything" do
+  test "robots.txt disallows everything but the pages for agents" do
     get "/robots.txt"
 
     assert_response :success
-    assert_match(/^User-agent: \*\nDisallow: \/$/, response.body)
+    assert_match(/^User-agent: \*\n(Allow: \S+\n)*Disallow: \/$/, response.body)
+    assert_equal %w[ /llms.txt /agentes /mcp /*.md$ /*format=md ], response.body.scan(/^Allow: (\S+)$/).flatten
   end
 
   test "asks search engines not to index, follow or archive any page" do

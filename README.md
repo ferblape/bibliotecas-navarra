@@ -40,6 +40,17 @@ Para instalarlo:
 - claude.ai o Claude Desktop: Ajustes → Conectores → Añadir conector personalizado, con la URL de arriba.
 - Otros clientes: cualquier cliente MCP con transporte HTTP, apuntando a la misma URL.
 
+Hay una página para personas que explica todo esto en https://bibliotecas-navarra.fly.dev/agentes.
+
+### Sin MCP
+
+Los agentes que solo leen páginas web tienen las instrucciones en [`/llms.txt`](https://bibliotecas-navarra.fly.dev/llms.txt), y la búsqueda y las fichas en Markdown:
+
+- `/?q=TÉRMINOS&format=md`, con `field`, `library` y `page` como en la web. Sin `q`, la lista de bibliotecas y sus códigos.
+- `/records/ID.md`: una ficha con sus ejemplares por biblioteca.
+
+`robots.txt` deja fuera a los buscadores, pero permite estas rutas a los agentes que leen por encargo de una persona.
+
 Cada petición se responde por separado (sin sesión MCP). Para no saturar el OPAC hay un límite de 10 peticiones por minuto por agente y de 60 por minuto entre todos; al pasarlo, el servidor responde con un error que pide esperar un minuto. El código está en `app/controllers/mcp_controller.rb` y `app/tools/`.
 
 ## Desarrollo

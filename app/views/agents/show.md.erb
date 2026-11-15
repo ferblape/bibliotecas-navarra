@@ -1,0 +1,30 @@
+# Bibliotecas de Navarra
+
+> Catálogo de las Bibliotecas Públicas de Navarra (España), consultado en vivo en su OPAC: libros, películas, música y más, con los ejemplares de cada biblioteca y si están disponibles para préstamo. No es un servicio oficial.
+
+El catálogo es lento y frágil, y es un servicio abierto a todos: no repitas búsquedas ni pases más páginas de las necesarias. Hay un límite de peticiones por minuto.
+
+## MCP
+
+Servidor MCP (Streamable HTTP, sin autenticación, solo lectura): <%== mcp_url %>
+
+- `list_libraries`: las bibliotecas y sus códigos.
+- `search_catalog`: busca por `query`, en un `field` (`any`, `title`, `author` o `subject`), en una `library` y en una `page`.
+- `get_record`: una ficha con sus ejemplares, la biblioteca de cada uno y si está disponible.
+
+## Markdown por HTTP
+
+Las mismas consultas, en Markdown:
+
+- Bibliotecas y sus códigos: <%== root_url %>?format=md
+- Buscar: <%== root_url %>?q=TÉRMINOS&format=md
+  - `field`: `any` (por defecto), `title`, `author` o `subject`.
+  - `library`: el código de una biblioteca, como `BPN/BP21`, para buscar solo en ella.
+  - `page`: la página de resultados, de 10 en 10.
+  - Ejemplo: <%== root_url(q: "Patria", field: "title", library: "BPN/BP21", format: "md") %>
+- Una ficha con sus ejemplares: <%== root_url %>records/ID.md, con el ID que da la búsqueda. Ejemplo: <%== record_url("554980", format: :md) %>
+
+## Más
+
+- Para personas: <%== agents_url %>
+- La web: <%== root_url %>
