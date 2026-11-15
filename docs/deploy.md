@@ -21,6 +21,7 @@ Run from the repository root, where `fly.toml` and `config/master.key` are.
 fly apps create bibliotecas-navarra
 fly volumes create storage --app bibliotecas-navarra --region cdg --size 1
 fly storage create --app bibliotecas-navarra --name bibliotecas-navarra-backups
+fly secrets sync --app bibliotecas-navarra
 fly secrets set --app bibliotecas-navarra --stage RAILS_MASTER_KEY="$(cat config/master.key)"
 fly deploy
 ```
@@ -33,6 +34,22 @@ for 5 days.
 `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as app secrets. It prints the
 secret key only once; manage keys afterwards with `fly storage dashboard`.
 Without `BUCKET_NAME` the app still runs, without backups.
+
+flyctl does not know about the secrets `fly storage create` sets until
+`fly secrets sync` runs, and until then deploys machines without them. To add
+the bucket to an app that is already running:
+
+```sh
+fly storage create --app bibliotecas-navarra --name bibliotecas-navarra-backups
+fly secrets sync --app bibliotecas-navarra
+fly secrets deploy --app bibliotecas-navarra
+```
+
+`fly logs` shows Litestream errors only. To see what is in the bucket:
+
+```sh
+fly ssh console --app bibliotecas-navarra -C "litestream ltx -config /rails/config/litestream.yml /rails/storage/production.sqlite3"
+```
 
 ## Deploy
 
