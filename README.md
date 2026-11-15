@@ -22,7 +22,7 @@ El OPAC es un AbsysNet sin API: la app abre una sesión, envía los formularios 
 - `app/models/catalog.rb`: la fachada que usa la app. Cachea búsquedas y fichas 10 minutos y la lista de bibliotecas un día. Si el OPAC falla, la app muestra "catálogo no disponible".
 - `List` y `Bookmark`: las listas de favoritos, en SQLite. Los libros visitados van en una cookie firmada (`RecentRecords`).
 
-Para cargar poco el OPAC: caché, cada sesión se cierra en cuanto se lee la respuesta, límite de 30 peticiones por minuto por visitante y un User-Agent propio. El OPAC rechaza sesiones nuevas ("Error 205") si hay demasiadas abiertas.
+Para cargar poco el OPAC: caché, cada sesión se cierra en cuanto se lee la respuesta, límite de 30 peticiones por minuto por visitante y respuesta 403 a buscadores y crawlers (`lib/middleware/block_crawlers.rb`). El OPAC rechaza sesiones nuevas ("Error 205") si hay demasiadas abiertas.
 
 Las decisiones y lo que se sabe del OPAC están en [`docs/plans/2026-11-15-catalogo-wrapper.md`](docs/plans/2026-11-15-catalogo-wrapper.md).
 
