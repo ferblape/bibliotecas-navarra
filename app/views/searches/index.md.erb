@@ -1,6 +1,10 @@
 <% if @results %>
 # Resultados de «<%== params[:q] %>»<%== " en #{library.name}" if library %>
 
+<% if @suggestion %>
+¿Quisiste decir «<%== @suggestion %>»? <%== root_url(search_params(@suggestion)) %>
+
+<% end %>
 <% if @results.records.any? %>
 <%= number_es @results.total %> resultados · página <%= @results.page %> de <%= number_es @results.total_pages %>
 

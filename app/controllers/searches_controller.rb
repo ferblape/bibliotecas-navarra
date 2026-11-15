@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
     @libraries = Catalog.libraries
     if query
       @results = Catalog.search(query, field:, library: library&.code, page:)
+      @suggestion = Suggestion.for(query) if @results.total <= Suggestion::FEW_RESULTS
     else
       @recent_records = recent_records
     end

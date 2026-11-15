@@ -82,6 +82,16 @@ class CatalogSearchTest < ActionDispatch::IntegrationTest
       assert_select ".no-results", /xqzwvkjh/
     end
 
+    test "suggests a correction for a misspelt search" do
+      skip "Needs RAILS_MASTER_KEY for the Google Books API key" unless GoogleBooks.api_key
+      get root_path(q: "ana cadabra", field: "title")
+
+      assert_select ".suggestion a[href=?]", root_path(field: "title", q: "anna kadabra"), "anna kadabra"
+
+      get root_path(q: "ana cadabra", field: "title", format: :md)
+      assert_includes response.body, "¿Quisiste decir «anna kadabra»? #{root_url(field: "title", q: "anna kadabra", format: :md)}"
+    end
+
     test "shows a record with the copies of the chosen library first" do
       get root_path(library: SAN_PEDRO)
       get record_path("554980")

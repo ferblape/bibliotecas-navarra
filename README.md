@@ -10,6 +10,7 @@ No es un servicio oficial del Gobierno de Navarra ni de sus bibliotecas. Cada b�
 - Muestra cada ficha con sus ejemplares por biblioteca y su disponibilidad, la biblioteca elegida primero, y enlaza a la ficha oficial.
 - Guarda favoritos en una lista anónima: no hay cuentas, la dirección secreta `/listas/<token>` es la llave. Quien la conoce puede verla y cambiarla.
 - Enseña en la portada los últimos libros visitados en este navegador.
+- Si una búsqueda da 3 resultados o menos, propone una corrección ("¿Quisiste decir *anna kadabra*?"). Para eso envía la búsqueda a Google Books, que tolera errores, y cambia cada palabra por la más parecida de los títulos y autores que encuentra (`app/models/suggestion.rb`). Necesita la clave `google_books.api_key` en las credenciales; sin ella, no hay sugerencias.
 - Ofrece el catálogo a agentes de IA por MCP (ver más abajo).
 
 En producción: https://bibliotecas-navarra.fly.dev
@@ -67,6 +68,7 @@ bin/dev                   # servidor en http://localhost:3000 (otro puerto: bin/
 ```sh
 bin/rails test            # sin red; los tests contra el OPAC real se saltan
 OPAC_LIVE=1 bin/rails test   # también contra el OPAC real
+GOOGLE_BOOKS_LIVE=1 bin/rails test   # también contra Google Books (necesita RAILS_MASTER_KEY)
 bin/ci                    # rubocop, auditorías de seguridad y tests, como en GitHub
 ```
 
