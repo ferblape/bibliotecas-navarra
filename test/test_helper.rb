@@ -18,4 +18,11 @@ class ActiveSupport::TestCase
   def opac_fixture(name)
     file_fixture("opac/#{name}.html").read
   end
+
+  def with_opac_host(host)
+    original, Opac::Session.host = Opac::Session.host, host
+    yield
+  ensure
+    Opac::Session.host = original
+  end
 end

@@ -55,12 +55,12 @@ No es un servicio oficial. Cada búsqueda consulta el OPAC en vivo; no copiamos 
 Hecho:
 - App Rails generada (Ruby 4.0.9, Rails 8.1.3; sin mailer, mailbox, action text, active storage, cable, jobs ni kamal).
 - Parsers en `app/models/opac/` con tests sobre HTML real (`test/fixtures/files/opac/`). `bin/rails test` y `bin/rubocop` en verde.
-- `Opac::Session` (`app/models/opac/session.rb`): `Opac::Session.open(ACC: 101)` o `open(TITN: id)` sigue el meta-refresh y deja la página de llegada en `#page`; `#get`/`#post` sobre la ruta de sesión, en UTF-8. El POST va a la ruta de sesión sin el `/NT1` del `action` y funciona igual. Tests en vivo con `OPAC_LIVE=1 bin/rails test test/models/opac/session_test.rb`.
+- `Opac::Session` (`app/models/opac/session.rb`): `Opac::Session.open(ACC: 101)` o `open(TITN: id)` sigue el meta-refresh y deja la página de llegada en `#page`; `#get`/`#post` sobre la ruta de sesión, en UTF-8. El POST va a la ruta de sesión sin el `/NT1` del `action` y funciona igual. Tests en vivo con `OPAC_LIVE=1 bin/rails test test/models/opac/session_test.rb`. Los caracteres que no existen en ISO-8859-1 se quitan al enviar.
+- `Catalog` (`app/models/catalog.rb`): `search(query, library:, page:)` y `record(id)` cacheados 10 minutos, `libraries` un día. Los errores de red, timeouts y códigos HTTP de error del OPAC salen como `Catalog::Unavailable`. Los tests de errores y caché apuntan `Opac::Session.host` a `localhost` en lugar de usar mocks.
 
 Siguiente, en este orden (TDD):
-1. `Catalog` con `Rails.cache`. Decidir qué hacer con términos que no caben en ISO-8859-1 (hoy `Opac::Session` lanza `Encoding::UndefinedConversionError`) y con errores HTTP o timeouts del OPAC.
-2. `SearchesController` (raíz) y `RecordsController`, vistas, biblioteca recordada en cookie.
-3. `rate_limit`, pie con fuente y aviso de servicio no oficial.
+1. `SearchesController` (raíz) y `RecordsController`, vistas, biblioteca recordada en cookie. Con `Catalog::Unavailable`, mostrar "catálogo no disponible".
+2. `rate_limit`, pie con fuente y aviso de servicio no oficial.
 
 ## Pendiente
 

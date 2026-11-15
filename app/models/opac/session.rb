@@ -2,11 +2,12 @@ module Opac
   # A browsing session in the OPAC. The OPAC keeps state (chosen library, last search)
   # on the server, tied to a token in the URL path and to the GN/GNW cookies.
   class Session
-    HOST = "www.navarra.es"
     ENTRY_PATH = "/opac/abnetcl.exe"
     ENCODING = Encoding::ISO_8859_1
     USER_AGENT = "BibliotecasNavarra/1.0 (unofficial catalog search)"
     TIMEOUT = 10
+
+    mattr_accessor :host, default: "www.navarra.es"
 
     attr_reader :path, :page
 
@@ -42,7 +43,7 @@ module Opac
       end
 
       def http
-        @http ||= Net::HTTP.start(HOST, use_ssl: true, open_timeout: TIMEOUT, read_timeout: TIMEOUT)
+        @http ||= Net::HTTP.start(host, use_ssl: true, open_timeout: TIMEOUT, read_timeout: TIMEOUT)
       end
 
       def store_cookies(response)
@@ -52,8 +53,9 @@ module Opac
         end
       end
 
+      # Characters that do not exist in ISO-8859-1 cannot reach the OPAC, so they are dropped.
       def form_data(params)
-        URI.encode_www_form(params.transform_values { it.to_s.encode(ENCODING) })
+        URI.encode_www_form(params.transform_values { it.to_s.encode(ENCODING, invalid: :replace, undef: :replace, replace: "") })
       end
   end
 end
