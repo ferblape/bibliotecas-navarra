@@ -48,7 +48,8 @@ No es un servicio oficial. Cada búsqueda consulta el OPAC en vivo; no copiamos 
 
 - Parsers: fixtures con HTML real descargado del OPAC (`test/fixtures/files/opac/`).
 - `Opac::Session` y `Catalog`: tests de integración contra el OPAC real, marcados para poder saltarlos sin red (`OPAC_LIVE=1`).
-- Controladores y sistema: con fixtures HTML servidas por un `Catalog` de test que lee de disco.
+- Integración (`test/integration/catalog_search_test.rb`): los criterios de aceptación van contra el OPAC real con `OPAC_LIVE=1`, sin `Catalog` falso (nada de mocks en end-to-end). "No disponible" y `rate_limit` corren siempre, con `Opac::Session.host` en `localhost`.
+- En test la caché es `:memory_store` para que los tests en vivo reutilicen respuestas y abran menos sesiones. Lanzar la suite en vivo una sola vez seguida: el OPAC rechaza sesiones ("Error 205") si se abren demasiadas.
 
 ## Estado (2026-11-15)
 
@@ -56,11 +57,16 @@ Hecho:
 - App Rails generada (Ruby 4.0.9, Rails 8.1.3; sin mailer, mailbox, action text, active storage, cable, jobs ni kamal).
 - Parsers en `app/models/opac/` con tests sobre HTML real (`test/fixtures/files/opac/`). `bin/rails test` y `bin/rubocop` en verde.
 - `Opac::Session` (`app/models/opac/session.rb`): `Opac::Session.open(ACC: 101)` o `open(TITN: id)` sigue el meta-refresh y deja la página de llegada en `#page`; `#get`/`#post` sobre la ruta de sesión, en UTF-8. El POST va a la ruta de sesión sin el `/NT1` del `action` y funciona igual. Tests en vivo con `OPAC_LIVE=1 bin/rails test test/models/opac/session_test.rb`. Los caracteres que no existen en ISO-8859-1 se quitan al enviar.
-- `Catalog` (`app/models/catalog.rb`): `search(query, library:, page:)` y `record(id)` cacheados 10 minutos, `libraries` un día. Los errores de red, timeouts y códigos HTTP de error del OPAC salen como `Catalog::Unavailable`. Los tests de errores y caché apuntan `Opac::Session.host` a `localhost` en lugar de usar mocks.
+- `Catalog` (`app/models/catalog.rb`): `search(query, field:, library:, page:)` y `record(id)` cacheados 10 minutos, `libraries` un día. Los errores de red, timeouts y códigos HTTP de error del OPAC salen como `Catalog::Unavailable`. Los tests de errores y caché apuntan `Opac::Session.host` a `localhost` en lugar de usar mocks.
+- Búsqueda por campo: Todo, Título, Autor o Materia, con el formulario avanzado del OPAC (`FORM=2`), que lleva la biblioteca (`subcat`) en el mismo POST. Un campo por búsqueda: con biblioteca elegida, el OPAC combina mal varios campos (título "patria" + autor "aramburu" en Biblioteca de Navarra devuelve libros de otros autores).
+- Sesiones: `Opac::Session.open(...) { }` cierra la sesión con `ACC=301` al acabar. Sin cerrarlas, una pasada de los tests saturaba el OPAC ("Error 205"). Si la entrada no da sesión o la página no es la esperada, `Opac::Session::Refused` / `Opac::UnexpectedPage` y `Catalog::Unavailable`; no se cachean páginas de error como "0 resultados".
+- Web: `SearchesController#index` (raíz, `?q=&field=&library=&page=`) y `RecordsController#show` (`/records/:id`). Biblioteca recordada en cookie permanente; en la ficha, sus ejemplares primero y abiertos, el resto por orden alfabético. Página de "catálogo no disponible" (503) y `rate_limit` de 30 peticiones por minuto y controlador (429). Pie con fuente de los datos y aviso de servicio no oficial. CSS propio con modo oscuro y móvil.
+- Portadas de Open Library por ISBN; sin portada, Open Library devuelve un GIF transparente.
 
-Siguiente, en este orden (TDD):
-1. `SearchesController` (raíz) y `RecordsController`, vistas, biblioteca recordada en cookie. Con `Catalog::Unavailable`, mostrar "catálogo no disponible".
-2. `rate_limit`, pie con fuente y aviso de servicio no oficial.
+Siguiente (ideas, sin orden):
+- Orden de resultados: el OPAC ordena por autor/título y en todo el catálogo salen primero folletos antiguos ("Patria" → página 1 sin la novela de Aramburu). `xssort` (fecha) no pareció cambiar nada; investigar.
+- Si `Opac::Session.new` falla tras abrir la conexión HTTP, la conexión no se cierra hasta el GC.
+- Las portadas del propio OPAC vienen de `covers.absys.cloud/<isbn>`; quizá cubren más que Open Library.
 
 ## Pendiente
 

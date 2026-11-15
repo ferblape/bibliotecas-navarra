@@ -18,6 +18,8 @@ class CatalogSearchTest < ActionDispatch::IntegrationTest
       get root_path(q: "Patria")
       assert_response :too_many_requests
     end
+  ensure
+    Rails.cache.clear
   end
 
   class LiveTest < ActionDispatch::IntegrationTest

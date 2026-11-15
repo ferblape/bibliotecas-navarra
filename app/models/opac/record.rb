@@ -9,7 +9,7 @@ module Opac
     end
 
     def cover_url
-      "https://covers.openlibrary.org/b/isbn/#{isbn.delete("-")}-M.jpg?default=false" if isbn
+      "https://covers.openlibrary.org/b/isbn/#{isbn.delete("-")}-M.jpg" if isbn
     end
   end
 end

@@ -25,7 +25,7 @@
   <% if library && copies.exclude?(library.copies_code) %>
     <p class="no-results">No hay ejemplares en <%= library.name %>.</p>
   <% end %>
-  <% copies.sort_by { |code, _| code == library&.copies_code ? 0 : 1 }.each do |code, library_copies| %>
+  <% copies.sort_by { |code, library_copies| [ code == library&.copies_code ? 0 : 1, library_copies.first.library_name ] }.each do |code, library_copies| %>
     <details <%= "open" if code == library&.copies_code %>>
       <summary>
         <span><%= library_copies.first.library_name %></span>
