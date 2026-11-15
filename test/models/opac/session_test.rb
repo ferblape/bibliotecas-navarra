@@ -11,9 +11,14 @@ class Opac::SessionTest < ActiveSupport::TestCase
     assert_raises(Opac::Session::Refused) { Opac::Session.session_url(opac_fixture("home")) }
   end
 
-  test "presents itself to the OPAC as an ordinary browser" do
-    assert_match %r{\AMozilla/5\.0 .+ Firefox/\d+\.0\z}, Opac::Session::USER_AGENT
-    assert_no_match(/bibliotecas|catalog/i, Opac::Session::USER_AGENT)
+  test "presents itself to the OPAC as one of several ordinary browsers" do
+    user_agents = Opac::Session::USER_AGENTS
+
+    assert_operator user_agents.uniq.size, :>, 3
+    user_agents.each do |user_agent|
+      assert_match %r{\AMozilla/5\.0 \(.+\) .+/[\d.]+\z}, user_agent
+      assert_no_match(/bibliotecas|catalog/i, user_agent)
+    end
   end
 
   class LiveTest < ActiveSupport::TestCase

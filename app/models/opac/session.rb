@@ -8,8 +8,16 @@ module Opac
 
     ENTRY_PATH = "/opac/abnetcl.exe"
     ENCODING = Encoding::ISO_8859_1
-    # A stable Firefox on Windows, so the OPAC sees one more browser rather than this service.
-    USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+    # Common desktop browsers, so the OPAC sees ordinary visitors rather than this service.
+    # Each session picks one and keeps it, as a browser would.
+    USER_AGENTS = [
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0",
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0) Gecko/20100101 Firefox/145.0",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.1 Safari/605.1.15"
+    ].freeze
     TIMEOUT = 10
 
     mattr_accessor :host, default: "www.navarra.es"
@@ -42,6 +50,7 @@ module Opac
 
     def initialize(params)
       @cookies = {}
+      @user_agent = USER_AGENTS.sample
       session_url = self.class.session_url(request(Net::HTTP::Get.new("#{ENTRY_PATH}?#{form_data(params)}")))
       @path = URI(session_url).path
       @page = request Net::HTTP::Get.new(session_url)
@@ -64,7 +73,7 @@ module Opac
 
     private
       def request(request)
-        request["User-Agent"] = USER_AGENT
+        request["User-Agent"] = @user_agent
         request["Cookie"] = @cookies.map { |name, value| "#{name}=#{value}" }.join("; ")
         response = http.request(request)
         response.value
