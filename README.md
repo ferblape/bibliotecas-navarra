@@ -7,7 +7,7 @@ No es un servicio oficial del Gobierno de Navarra ni de sus bibliotecas. Cada b�
 ## Qué hace
 
 - Busca en todo el catálogo o en una biblioteca, por cualquier campo, título, autor o materia. La biblioteca elegida se recuerda en una cookie.
-- Muestra cada ficha con sus ejemplares por biblioteca y su disponibilidad, la biblioteca elegida primero, y enlaza a la ficha oficial.
+- Muestra cada ficha con sus ejemplares por biblioteca y su disponibilidad, la biblioteca elegida primero, y enlaza a la ficha oficial. Si compartes tu ubicación, ordena las bibliotecas por distancia; el cálculo se hace en el navegador y la ubicación no llega al servidor.
 - Guarda favoritos en una lista anónima: no hay cuentas, la dirección secreta `/listas/<token>` es la llave. Quien la conoce puede verla y cambiarla.
 - Enseña en la portada los últimos libros visitados en este navegador.
 - Lista las bibliotecas con su dirección, un enlace a Google Maps, teléfono, correo y su ficha oficial (`/bibliotecas`).
@@ -27,7 +27,7 @@ El OPAC es un AbsysNet sin API: la app abre una sesión, envía los formularios 
 
 ### Direcciones de las bibliotecas
 
-Vienen del [directorio de bibliotecas de navarra.es](https://www.navarra.es/es/bibliotecas/directorio) y se guardan en `config/libraries.yml`, versionado en el repo. `bin/rails libraries:import` lo regenera: lee el directorio, empareja cada centro con su biblioteca del OPAC por el nombre y baja la dirección, los teléfonos y los correos de su ficha. Las bibliotecas cuyos nombres no coinciden se emparejan a mano en `config/library_overrides.yml`. No se copian los horarios, porque cambian según la época: la página enlaza a la ficha oficial.
+Vienen del [directorio de bibliotecas de navarra.es](https://www.navarra.es/es/bibliotecas/directorio) y se guardan en `config/libraries.yml`, versionado en el repo. `bin/rails libraries:import` lo regenera: lee el directorio, empareja cada centro con su biblioteca del OPAC por el nombre y baja la dirección, los teléfonos y los correos de su ficha. Las coordenadas de cada sede salen de [CartoCiudad](https://www.cartociudad.es), el geocodificador del Gobierno de España. Las bibliotecas cuyos nombres no coinciden y las sedes que CartoCiudad solo sitúa en su pueblo se corrigen a mano en `config/library_overrides.yml`; la importación avisa de las sedes que comparten punto. No se copian los horarios, porque cambian según la época: la página enlaza a la ficha oficial.
 
 La importación no se ejecuta al desplegar. La GitHub Action `Refresh libraries` la lanza el día 1 de cada mes y abre una PR si algo ha cambiado; también se puede lanzar a mano desde la pestaña Actions.
 

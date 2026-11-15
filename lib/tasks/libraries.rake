@@ -9,5 +9,13 @@ namespace :libraries do
 
     missing = libraries.select { it["locations"].empty? }.map { it["code"] }
     puts "#{libraries.size} libraries, #{missing.size} without a location: #{missing.join(", ")}"
+
+    # Centres placed on the same point were most likely found only by their town.
+    locations = libraries.flat_map { it["locations"] }
+    locations.group_by { it.values_at("latitude", "longitude") }.each do |(latitude, longitude), shared|
+      next if shared.size < 2 && latitude
+
+      puts "Check the coordinates of #{shared.map { it["name"] }.join(", ")}: #{latitude ? "same point" : "not found"}"
+    end
   end
 end

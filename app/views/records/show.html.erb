@@ -28,22 +28,31 @@
 
 <section class="copies">
   <h2>Ejemplares</h2>
+  <%# Shown by application.js when the browser can tell where the visitor is. %>
+  <p class="copies__nearby">
+    <button type="button" class="button button--quiet" data-sort-by-distance hidden>📍 Ordenar por cercanía</button>
+    <span class="copies__nearby-note" data-distance-note hidden>Ordenadas por cercanía. Tu ubicación no sale de tu navegador.</span>
+  </p>
   <% copies = @record.copies.group_by(&:library_code) %>
   <% if library && copies.exclude?(library.copies_code) %>
     <p class="no-results">No hay ejemplares en <%= library.name %>.</p>
   <% end %>
   <% copies.sort_by { |code, library_copies| [ code == library&.copies_code ? 0 : 1, library_copies.first.library_name ] }.each do |code, library_copies| %>
-    <details <%= "open" if code == library&.copies_code %>>
+    <% directory_library = LibraryDirectory.find_by_copies_code(code) %>
+    <% coordinates = directory_library&.locations.to_a.filter_map { [ it.latitude, it.longitude ] if it.latitude } %>
+    <details <%= "open" if code == library&.copies_code %> data-coordinates="<%= coordinates.to_json %>">
       <summary>
-        <% directory_library = LibraryDirectory.find_by_copies_code(code) %>
         <span>
           <%= library_copies.first.library_name %>
           <% if directory_library&.locations&.any? %>
             <%= link_to "Dirección", libraries_path(anchor: directory_library.anchor), class: "copies__address" %>
           <% end %>
         </span>
-        <span class="availability <%= "availability--available" if library_copies.any?(&:available?) %>">
-          <%= library_copies.count(&:available?) %> de <%= library_copies.size %> disponibles
+        <span class="copies__status">
+          <span class="copies__distance" data-distance></span>
+          <span class="availability <%= "availability--available" if library_copies.any?(&:available?) %>">
+            <%= library_copies.count(&:available?) %> de <%= library_copies.size %> disponibles
+          </span>
         </span>
       </summary>
       <table>

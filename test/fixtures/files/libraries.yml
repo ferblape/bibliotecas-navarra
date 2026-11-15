@@ -8,6 +8,8 @@
     emails:
     - biblispe@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-san-pedro
+    latitude: 42.82654
+    longitude: -1.64545
 - code: BEN/BAN
   name: Archivo de Navarra
   locations: []

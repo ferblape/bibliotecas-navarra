@@ -431,6 +431,10 @@ h1, h2 { line-height: 1.25; }
   .record__details dd { margin-bottom: 0.35rem; }
 
   .result { gap: 0.75rem; }
+
+  /* The name of the library keeps its line; distance and availability wrap below it. */
+  .copies summary { flex-wrap: wrap; gap: 0.35rem 0.75rem; }
+  .copies__status { margin-left: auto; }
   .result__title { font-size: 1rem; }
 }
 
@@ -472,3 +476,11 @@ h1, h2 { line-height: 1.25; }
 
 .library__links a { display: inline-block; padding: 0.15rem 0; overflow-wrap: anywhere; }
 .copies__address { margin-left: 0.4rem; font-size: 0.8rem; }
+
+/* Copies by distance */
+
+.copies__nearby { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin: 0 0 0.75rem; }
+.copies__nearby:not(:has(:not([hidden]))) { display: none; }
+.copies__nearby-note { color: var(--muted); font-size: 0.85rem; }
+.copies__status { display: inline-flex; align-items: center; gap: 0.5rem; flex: none; }
+.copies__distance { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }

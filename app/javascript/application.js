@@ -36,3 +36,57 @@ function offerToKeepAddress(element) {
     hint.hidden = false
   }
 }
+
+// The copies of a record, sorted by how far their library is from the visitor. The
+// position stays in the browser: the distances are worked out here, never on the server.
+document.addEventListener("turbo:load", () => {
+  document.querySelectorAll(".copies").forEach(offerToSortByDistance)
+})
+
+function offerToSortByDistance(copies) {
+  const button = copies.querySelector("[data-sort-by-distance]")
+  if (!button || !navigator.geolocation) return
+
+  const sort = () => {
+    button.disabled = true
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => sortByDistance(copies, coords),
+      () => { button.hidden = true },
+      { maximumAge: 10 * 60 * 1000, timeout: 15 * 1000 }
+    )
+  }
+
+  button.hidden = false
+  button.addEventListener("click", sort)
+
+  // Visitors who already shared their position get the copies sorted without asking again.
+  navigator.permissions?.query({ name: "geolocation" }).then((permission) => {
+    if (permission.state === "granted") sort()
+    if (permission.state === "denied") button.hidden = true
+  }).catch(() => {})
+}
+
+function sortByDistance(copies, position) {
+  const libraries = [ ...copies.querySelectorAll("details[data-coordinates]") ].map((library) => {
+    const distances = JSON.parse(library.dataset.coordinates).map(([ latitude, longitude ]) => kilometres(position, { latitude, longitude }))
+    const distance = Math.min(...distances)
+    library.querySelector("[data-distance]").textContent = Number.isFinite(distance) ? formatKilometres(distance) : ""
+    return { library, distance }
+  })
+
+  libraries.sort((a, b) => a.distance - b.distance).forEach(({ library }) => copies.append(library))
+  copies.querySelector("[data-sort-by-distance]").hidden = true
+  copies.querySelector("[data-distance-note]").hidden = false
+}
+
+// Haversine distance between two points on the Earth.
+function kilometres(from, to) {
+  const radians = (degrees) => degrees * Math.PI / 180
+  const a = Math.sin(radians(to.latitude - from.latitude) / 2) ** 2 +
+    Math.cos(radians(from.latitude)) * Math.cos(radians(to.latitude)) * Math.sin(radians(to.longitude - from.longitude) / 2) ** 2
+  return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+}
+
+function formatKilometres(distance) {
+  return `${distance.toLocaleString("es", { maximumFractionDigits: distance < 10 ? 1 : 0 })} km`
+}

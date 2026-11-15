@@ -42,5 +42,6 @@ class LibrariesTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "### Pamplona-San Pedro (`BPN/BP21`)"
     assert_includes response.body, "Calle Virgen del Río, s/n, 31014 Pamplona / Iruña"
     assert_includes response.body, "https://www.google.com/maps/search/?api=1&query="
+    assert_match(/- Coordenadas: 42\.\d+, -1\.\d+/, response.body)
   end
 end

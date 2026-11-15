@@ -24,6 +24,12 @@ class LibraryDirectoryTest < ActiveSupport::TestCase
     assert_equal "https://www.google.com/maps/search/?api=1&query=Calle+Virgen+del+R%C3%ADo%2C+s%2Fn%2C+31014+Pamplona+%2F+Iru%C3%B1a", location.map_url
   end
 
+  test "knows where each location is" do
+    location = @directory.find("BPN/BP21").locations.first
+
+    assert_equal [ 42.82654, -1.64545 ], [ location.latitude, location.longitude ]
+  end
+
   test "tells public libraries from specialized ones" do
     assert @directory.find("BPN/BP21").public?
     assert_not @directory.find("BEN/BAN").public?

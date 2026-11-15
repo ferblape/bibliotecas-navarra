@@ -10,6 +10,8 @@
     emails:
     - bibliotecadenavarra@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-navarra
+    latitude: 42.80943
+    longitude: -1.67521
 - code: BPN/BP57
   name: Ablitas
   locations:
@@ -22,6 +24,8 @@
     - bibliabl@navarra.es
     - biblioteca.ablitas@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-ablitas
+    latitude: 41.9753
+    longitude: -1.64006
 - code: BPN/BP78
   name: Aibar
   locations:
@@ -33,6 +37,8 @@
     - bibliaib@navarra.es
     - biblioteca.aibar@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-aibar
+    latitude: 42.5907
+    longitude: -1.36033
 - code: BPN/BP70
   name: Allo
   locations:
@@ -44,6 +50,8 @@
     - bibliall@navarra.es
     - biblioteca.allo@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-allo
+    latitude: 42.56783
+    longitude: -2.01971
 - code: BPN/BP13
   name: Altsasu/Alsasua
   locations:
@@ -56,6 +64,8 @@
     - biblials@navarra.es
     - biblioteca.alsasua@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-alsasua
+    latitude: 42.89677
+    longitude: -2.17168
 - code: BPN/BP67
   name: Andosilla
   locations:
@@ -67,6 +77,8 @@
     - bibliand@navarra.es
     - biblioteca.andosilla@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-andosilla
+    latitude: 42.37547
+    longitude: -1.94484
 - code: BPN/BP11
   name: Ansoáin / Antsoain
   locations:
@@ -78,6 +90,8 @@
     - biblians@navarra.es
     - biblioteca.ansoain@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-ansoain
+    latitude: 42.83419
+    longitude: -1.63991
 - code: BPN/BP55
   name: Aoiz
   locations:
@@ -89,6 +103,8 @@
     - bibliaoi@navarra.es
     - biblioteca.aoiz@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-aoiz
+    latitude: 42.78703
+    longitude: -1.36981
 - code: BPN/BP35
   name: Aranguren, Valle de
   locations:
@@ -100,6 +116,8 @@
     - bibliara@navarra.es
     - biblioteca.aranguren@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-del-valle-de-aranguren
+    latitude: 42.79302
+    longitude: -1.62031
 - code: BPN/BP56
   name: Arguedas
   locations:
@@ -111,6 +129,8 @@
     - bibliarg@navarra.es
     - biblioteca.arguedas@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-arguedas
+    latitude: 42.17649
+    longitude: -1.59883
 - code: BPN/BP71
   name: Artajona
   locations:
@@ -122,6 +142,8 @@
     - bibliart@navarra.es
     - biblioteca.artajona@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-artajona
+    latitude: 42.58759
+    longitude: -1.76398
 - code: BPN/BP77
   name: Aurizberri/Espinal
   locations:
@@ -133,6 +155,8 @@
     - bibliesp@navarra.es
     - biblioteca.espinal@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-espinal
+    latitude: 42.97671
+    longitude: -1.35913
 - code: BPN/BP93
   name: Ayegui
   locations:
@@ -143,6 +167,8 @@
     emails:
     - biblioteca@ayegui.org
     url: https://www.navarra.es/es/w/centro/biblioteca-de-ayegui
+    latitude: 42.65666
+    longitude: -2.03836
 - code: BPN/BP28
   name: Azagra
   locations:
@@ -155,6 +181,8 @@
     - bibliaza@navarra.es
     - biblioteca.azagra@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-azagra
+    latitude: 42.30781
+    longitude: -1.8947
 - code: BPN/BP14
   name: Barañáin
   locations:
@@ -166,6 +194,8 @@
     - biblioba@navarra.es
     - biblioteca.baranain@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-baranain
+    latitude: 42.80415
+    longitude: -1.68775
 - code: BPN/BP29
   name: Baztan
   locations:
@@ -177,6 +207,8 @@
     - biblibaz@navarra.es
     - biblioteca.baztan@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-baztan
+    latitude: 43.14475
+    longitude: -1.52218
 - code: BPN/BP40
   name: Bera
   locations:
@@ -188,6 +220,8 @@
     - bibliber@navarra.es
     - biblioteca.bera@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-bera
+    latitude: 43.28036
+    longitude: -1.68353
 - code: BPN/BP59
   name: Beriáin
   locations:
@@ -199,6 +233,8 @@
     - biblibri@navarra.es
     - biblioteca.beriain@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-beriain
+    latitude: 42.73939
+    longitude: -1.63459
 - code: BPN/BP58
   name: Berrioplano / Berriobeiti
   locations:
@@ -211,6 +247,8 @@
     - bibliarc@navarra.es
     - biblioteca.artica@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-artica
+    latitude: 42.83615
+    longitude: -1.65901
 - code: BPN/BP37
   name: Berriozar
   locations:
@@ -222,6 +260,8 @@
     emails:
     - biblibrr@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-berriozar
+    latitude: 42.83517
+    longitude: -1.67367
 - code: BPN/BP79
   name: Buñuel
   locations:
@@ -233,6 +273,8 @@
     - biblibun@navarra.es
     - biblioteca.bunuel@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-bunuel
+    latitude: 41.98015
+    longitude: -1.44506
 - code: BPN/BP15
   name: Burlada
   locations:
@@ -246,6 +288,8 @@
     - biblioteca.burlada@navarra.es
     - bibliotecainfantil@burlada.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-burlada
+    latitude: 42.8256
+    longitude: -1.61933
 - code: BPN/BP87
   name: Cabanillas
   locations:
@@ -256,6 +300,8 @@
     emails:
     - bibliocabanillas@yahoo.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-cabanillas
+    latitude: 42.03498
+    longitude: -1.52916
 - code: BPN/BP63
   name: Caparroso
   locations:
@@ -267,6 +313,8 @@
     - biblicap@navarra.es
     - biblioteca.caparroso@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-caparroso
+    latitude: 42.33851
+    longitude: -1.65478
 - code: BPN/BP92
   name: Cárcar
   locations:
@@ -277,6 +325,8 @@
     emails:
     - centrocultural@carcar.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-carcar
+    latitude: 42.39477
+    longitude: -1.97884
 - code: BPN/BP50
   name: Carcastillo
   locations:
@@ -288,6 +338,8 @@
     - biblicar@navarra.es
     - biblioteca.carcastillo@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-carcastillo
+    latitude: 42.37925
+    longitude: -1.44624
 - code: BPN/BP30
   name: Cascante
   locations:
@@ -299,6 +351,8 @@
     - biblicas@navarra.es
     - biblioteca.cascante@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-cascante
+    latitude: 41.99844
+    longitude: -1.67814
 - code: BPN/BP80
   name: Cáseda
   locations:
@@ -310,6 +364,8 @@
     - biblicad@navarra.es
     - biblioteca.caseda@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-caseda
+    latitude: 42.52331
+    longitude: -1.36757
 - code: BPN/BP41
   name: Castejón
   locations:
@@ -321,6 +377,8 @@
     - biblicat@navarra.es
     - biblioteca.castejon@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-castejon
+    latitude: 42.17049
+    longitude: -1.6933
 - code: BPN/BP31
   name: Cintruénigo
   locations:
@@ -332,6 +390,8 @@
     - biblicin@navarra.es
     - biblioteca.cintruenigo@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-cintruenigo
+    latitude: 42.07282
+    longitude: -1.797
 - code: BPN/BP32
   name: Corella
   locations:
@@ -343,6 +403,8 @@
     - biblicor@navarra.es
     - biblioteca.corella@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-corella
+    latitude: 42.11481
+    longitude: -1.78984
 - code: BPN/BP33
   name: Cortes
   locations:
@@ -354,6 +416,8 @@
     - biblicot@navarra.es
     - biblioteca.cortes@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-cortes
+    latitude: 41.92126
+    longitude: -1.42084
 - code: BPN/BP89
   name: Doneztebe
   locations:
@@ -364,6 +428,8 @@
     emails:
     - bibliodoneztebe@yahoo.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-santesteban
+    latitude: 43.13234
+    longitude: -1.66726
 - code: BPN/BP88
   name: Egües, Valle de
   locations:
@@ -374,6 +440,8 @@
     emails:
     - biblioteca-liburutegiasarriguren@egues.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-valle-de-egues-sarriguren
+    latitude: 42.80419
+    longitude: -1.63294
   - name: Biblioteca de Valle de Egües-Olaz
     address: Carretera de Huarte, kilómetro 5, 31620 Olaz (Valle de Egües)
     phones:
@@ -381,6 +449,8 @@
     emails:
     - biblioteca-liburutegiaolaz@egues.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-valle-de-egues-olaz
+    latitude: 42.82663
+    longitude: -1.59749
 - code: BPN/BP16
   name: Estella
   locations:
@@ -392,6 +462,8 @@
     - bibliest@navarra.es
     - biblioteca.estella@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-estella-lizarra
+    latitude: 42.67054
+    longitude: -2.0279
 - code: BPN/BP62
   name: Etxarri Aranatz
   locations:
@@ -403,6 +475,8 @@
     - biblietx@navarra.es
     - biblioteca.etxarriaranaz@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-etxarri-aranatz
+    latitude: 42.90679
+    longitude: -2.06471
 - code: BPN/BP73
   name: Falces
   locations:
@@ -414,6 +488,8 @@
     - biblifal@navarra.es
     - biblioteca.falces@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-falces
+    latitude: 42.38953
+    longitude: -1.79559
 - code: BPN/BP54
   name: Fitero
   locations:
@@ -425,6 +501,8 @@
     - biblifit@navarra.es
     - biblioteca.fitero@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-fitero
+    latitude: 42.05792
+    longitude: -1.8564
 - code: BPN/BP74
   name: Funes
   locations:
@@ -436,6 +514,8 @@
     - biblifun@navarra.es
     - biblioteca.funes@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-funes
+    latitude: 42.31687
+    longitude: -1.80146
 - code: BPN/BP64
   name: Fustiñana
   locations:
@@ -447,6 +527,8 @@
     - biblifus@navarra.es
     - biblioteca.fustinana@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-fustinana
+    latitude: 42.0198
+    longitude: -1.48593
 - code: BPN/BP17
   name: Huarte/Uharte
   locations:
@@ -458,6 +540,8 @@
     - biblihua@navarra.es
     - biblioteca.huarte@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-huarte
+    latitude: 42.831
+    longitude: -1.59139
 - code: BPN/BP68
   name: Irurtzun
   locations:
@@ -469,6 +553,8 @@
     - bibliiru@navarra.es
     - biblioteca.irurtzun@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-irurtzun
+    latitude: 42.9183
+    longitude: -1.82983
 - code: BPN/BP42
   name: Leitza
   locations:
@@ -481,6 +567,8 @@
     - biblilei@navarra.es
     - biblioteca.leitza@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-leitza
+    latitude: 43.0828
+    longitude: -1.91326
 - code: BPN/BP91
   name: Lekunberri
   locations:
@@ -491,6 +579,8 @@
     emails:
     - mitxausenea.kultura@gmail.com
     url: https://www.navarra.es/es/w/centro/biblioteca-de-lekunberri
+    latitude: 43.00585
+    longitude: -1.89575
 - code: BPN/BP65
   name: Lerin
   locations:
@@ -502,6 +592,8 @@
     - bibliler@navarra.es
     - biblioteca.lerin@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-lerin
+    latitude: 42.48323
+    longitude: -1.97209
 - code: BPN/BP39
   name: Lesaka
   locations:
@@ -514,6 +606,8 @@
     - bibliles@navarra.es
     - biblioteca.lesaka@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-lesaka
+    latitude: 43.24757
+    longitude: -1.70416
 - code: BPN/BP43
   name: Lodosa
   locations:
@@ -525,6 +619,8 @@
     - biblilos@navarra.es
     - biblioteca.lodosa@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-lodosa
+    latitude: 42.42199
+    longitude: -2.0776
 - code: BPN/BP81
   name: Los Arcos
   locations:
@@ -536,6 +632,8 @@
     - biblilar@navarra.es
     - biblioteca.losarcos@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-los-arcos-1
+    latitude: 42.5688
+    longitude: -2.19388
 - code: BPN/BP72
   name: Lumbier
   locations:
@@ -547,6 +645,8 @@
     - biblilum@navarra.es
     - biblioteca.lumbier@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-lumbier
+    latitude: 42.65138
+    longitude: -1.3094
 - code: BPN/BP94
   name: Mañeru
   locations:
@@ -558,6 +658,8 @@
     - bibliomaneru@yahoo.es
     - bibliomaneru@gmail.com
     url: https://www.navarra.es/es/w/centro/biblioteca-de-maneru
+    latitude: 42.66888
+    longitude: -1.86381
 - code: BPN/BP75
   name: Marcilla
   locations:
@@ -569,6 +671,8 @@
     - biblimar@navarra.es
     - biblioteca.marcilla@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-marcilla
+    latitude: 42.32647
+    longitude: -1.73865
 - code: BPN/BP82
   name: Mélida
   locations:
@@ -580,6 +684,8 @@
     - biblimel@navarra.es
     - biblioteca.melida@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-melida
+    latitude: 42.35929
+    longitude: -1.5472
 - code: BPN/BP18
   name: Mendavia
   locations:
@@ -592,6 +698,8 @@
     - biblimen@navarra.es
     - biblioteca.mendavia@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-mendavia
+    latitude: 42.44187
+    longitude: -2.2003
 - code: BPN/BP86
   name: Mendigorria
   locations:
@@ -603,6 +711,8 @@
     - biblimed@navarra.es
     - biblioteca.mendigorria@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-mendigorria
+    latitude: 42.62824
+    longitude: -1.83567
 - code: BPN/BP60
   name: Milagro
   locations:
@@ -614,6 +724,8 @@
     - biblimlg@navarra.es
     - biblioteca.milagro@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-milagro
+    latitude: 42.24151
+    longitude: -1.76743
 - code: BPN/BP83
   name: Miranda de Arga
   locations:
@@ -625,6 +737,8 @@
     - biblimda@navarra.es
     - biblioteca.mirandadearga@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-miranda-de-arga
+    latitude: 42.4835
+    longitude: -1.82963
 - code: BPN/BP84
   name: Monteagudo
   locations:
@@ -636,6 +750,8 @@
     - biblimon@navarra.es
     - biblioteca.monteagudo@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-monteagudo
+    latitude: 41.96053
+    longitude: -1.69263
 - code: BPN/BP44
   name: Murchante
   locations:
@@ -648,6 +764,8 @@
     - biblimur@navarra.es
     - biblioteca.murchante@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-murchante
+    latitude: 42.03053
+    longitude: -1.65486
 - code: BPN/BP36
   name: Noáin
   locations:
@@ -660,6 +778,8 @@
     - biblinoa@navarra.es
     - biblioteca.noain@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-noain-valle-de-elorz-
+    latitude: 42.75956
+    longitude: -1.63589
 - code: BPN/BP69
   name: Olazti/Olazagutia
   locations:
@@ -671,6 +791,8 @@
     - bibliola@navarra.es
     - biblioteca.olazagutia@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-olazagutia
+    latitude: 42.87559
+    longitude: -2.19761
 - code: BPN/BP45
   name: Olite
   locations:
@@ -682,6 +804,8 @@
     - biblioli@navarra.es
     - biblioteca.olite@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-olite
+    latitude: 42.47963
+    longitude: -1.6495
 - code: BPN/BP95
   name: Oteiza
   locations:
@@ -692,6 +816,8 @@
     emails:
     - biblioteca@oteiza.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-oteiza
+    latitude: 42.61902
+    longitude: -1.95467
 - code: BPN/BP19
   name: Pamplona-Chantrea
   locations:
@@ -702,6 +828,8 @@
     emails:
     - biblioteca.txantrea@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-txantrea
+    latitude: 42.83168
+    longitude: -1.6322
 - code: BPN/BP38
   name: Pamplona-Civican
   locations:
@@ -712,6 +840,8 @@
     emails:
     - bibliotecacivican@fundacioncajanavarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-civican
+    latitude: 42.81303
+    longitude: -1.65512
 - code: BPN/BP34
   name: Pamplona-Echavacoiz
   locations:
@@ -723,6 +853,8 @@
     - bibliech@navarra.es
     - biblioteca.echavacoiz@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-echavacoiz
+    latitude: 42.79891
+    longitude: -1.67391
 - code: BPN/BP52
   name: Pamplona-Iturrama
   locations:
@@ -734,6 +866,8 @@
     - biblitur@navarra.es
     - biblioteca.iturrama@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-iturrama
+    latitude: 42.80564
+    longitude: -1.65178
 - code: BPN/BP53
   name: Pamplona-Mendillorri
   locations:
@@ -745,6 +879,8 @@
     - biblimdl@navarra.es
     - biblioteca.mendillorri@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-mendillorri
+    latitude: 42.81012
+    longitude: -1.61787
 - code: BPN/BP26
   name: Pamplona-Milagrosa
   locations:
@@ -756,6 +892,8 @@
     - biblimil@navarra.es
     - biblioteca.milagrosa@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-milagrosa
+    latitude: 42.80585
+    longitude: -1.642
 - code: BPN/BP76
   name: Pamplona-San Francisco
   locations:
@@ -766,6 +904,8 @@
     emails:
     - biblisfr@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-san-francisco
+    latitude: 42.57085
+    longitude: -2.19322
 - code: BPN/BP51
   name: Pamplona-San Jorge
   locations:
@@ -777,6 +917,8 @@
     - biblisjo@navarra.es
     - biblioteca.pamplona.sanjorge@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-san-jorge
+    latitude: 42.82205
+    longitude: -1.66833
 - code: BPN/BP21
   name: Pamplona-San Pedro
   locations:
@@ -788,6 +930,8 @@
     - biblispe@navarra.es
     - biblioteca.sanpedro@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-san-pedro
+    latitude: 42.82654
+    longitude: -1.64545
 - code: BPN/BP20
   name: Pamplona-Yamaguchi
   locations:
@@ -799,6 +943,8 @@
     - bibliyam@navarra.es
     - biblioteca.yamaguchi@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-pamplona-yamaguchi
+    latitude: 42.8102
+    longitude: -1.66259
 - code: BPN/BP46
   name: Peralta
   locations:
@@ -810,6 +956,8 @@
     - bibliper@navarra.es
     - biblioteca.peralta@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-peralta
+    latitude: 42.33847
+    longitude: -1.80449
 - code: BPN/BP66
   name: Puente la Reina/Gares
   locations:
@@ -821,6 +969,8 @@
     - biblipue@navarra.es
     - biblioteca.puentelareina@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-puente-la-reina
+    latitude: 42.67165
+    longitude: -1.81549
 - code: BPN/BP47
   name: Ribaforada
   locations:
@@ -832,6 +982,8 @@
     - biblirib@navarra.es
     - biblioteca.ribaforada@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-ribaforada
+    latitude: 41.99819
+    longitude: -1.50894
 - code: BPN/BP85
   name: Roncal
   locations:
@@ -843,6 +995,8 @@
     - bibliron@navarra.es
     - biblioteca.roncal@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-roncal
+    latitude: 42.80579
+    longitude: -0.95761
 - code: BPN/BP48
   name: San Adrián
   locations:
@@ -853,6 +1007,8 @@
     emails:
     - biblisad@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-san-adrian
+    latitude: 42.3355
+    longitude: -1.93067
 - code: BPN/BP22
   name: Sangüesa
   locations:
@@ -864,6 +1020,8 @@
     - biblisan@navarra.es
     - biblioteca.sanguesa@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-sanguesa
+    latitude: 42.90967
+    longitude: -1.88695
 - code: BPN/BP90
   name: Sartaguda
   locations:
@@ -874,6 +1032,8 @@
     emails:
     - bibliosartaguda@yahoo.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-sartaguda
+    latitude: 42.38077
+    longitude: -2.05908
 - code: BPN/BP27
   name: Tafalla
   locations:
@@ -885,6 +1045,8 @@
     - biblitaf@navarra.es
     - biblioteca.tafalla@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-tafalla
+    latitude: 42.53014
+    longitude: -1.67465
 - code: BPN/BP23
   name: Tudela
   locations:
@@ -897,6 +1059,8 @@
     - biblitud@navarra.es
     - biblioteca.tudela@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-tudela
+    latitude: 42.06275
+    longitude: -1.60746
 - code: BPN/BP12
   name: Valtierra
   locations:
@@ -908,6 +1072,8 @@
     - biblival@navarra.es
     - biblioteca.valtierra@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-valtierra
+    latitude: 42.19457
+    longitude: -1.63316
 - code: BPN/BP49
   name: Viana
   locations:
@@ -919,6 +1085,8 @@
     - biblivia@navarra.es
     - biblioteca.viana@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-viana
+    latitude: 42.51471
+    longitude: -2.37335
 - code: BPN/BP61
   name: Villafranca
   locations:
@@ -930,6 +1098,8 @@
     - biblivfr@navarra.es
     - biblioteca.villafranca@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-villafranca
+    latitude: 42.27928
+    longitude: -1.74746
 - code: BPN/BP24
   name: Villava
   locations:
@@ -941,6 +1111,8 @@
     - biblivil@navarra.es
     - biblioteca.villava@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-villava
+    latitude: 42.8318
+    longitude: -1.6094
 - code: BPN/BP25
   name: Zizur Mayor
   locations:
@@ -952,6 +1124,8 @@
     - bibliziz@navarra.es
     - biblioteca.zizur@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-zizur-mayor
+    latitude: 42.78653
+    longitude: -1.69136
 - code: BEN/BAN
   name: Archivo de Navarra
   locations: []
@@ -970,6 +1144,8 @@
     - mlosarcs@navarra.es
     - archivogeneral@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-del-archivo-real-y-general-de-navarra
+    latitude: 42.81989
+    longitude: -1.64397
 - code: BEN/BCM
   name: Ciudad de la Música
   locations:
@@ -980,6 +1156,8 @@
     emails:
     - bibciudmus@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-la-ciudad-de-la-musica
+    latitude: 42.80848
+    longitude: -1.67461
 - code: BEN/BDR
   name: Desarrollo Rural
   locations:
@@ -990,6 +1168,8 @@
     emails:
     - bibliodesarrollorural@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-desarrollo-rural-y-medioambiente
+    latitude: 42.80877
+    longitude: -1.63848
 - code: BEN/BEU
   name: Euskarabidea
   locations:
@@ -1000,6 +1180,8 @@
     emails:
     - euskarabidea@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-de-euskarabidea-instituto-navarro-del-euskera
+    latitude: 42.81368
+    longitude: -1.64108
 - code: BEN/BMN
   name: Museo de Navarra
   locations:
@@ -1010,6 +1192,8 @@
     emails:
     - bmuseona@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-del-museo-de-navarra
+    latitude: 42.81942
+    longitude: -1.64614
 - code: BEN/BMC
   name: Museo del Carlismo
   locations:
@@ -1020,6 +1204,8 @@
     emails:
     - museo.carlismo@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-del-museo-del-carlismo
+    latitude: 42.66984
+    longitude: -2.02786
 - code: BEN/BME
   name: Museo Etnológico
   locations:
@@ -1031,6 +1217,8 @@
     - biblioet@navarra.es
     - museo.etnologico.navarra@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-del-museo-etnologico-de-navarra
+    latitude: 42.6612
+    longitude: -2.03037
 - code: BEN/MYDH
   name: Paz Convivencia y Derechos Humanos
   locations:
@@ -1041,6 +1229,8 @@
     emails:
     - inm.biblioteca@navarra.es
     url: https://www.navarra.es/es/w/centro/biblioteca-y-centro-documental-del-instituto-navarro-de-la-memoria
+    latitude: 42.81934
+    longitude: -1.64304
 - code: BEN/BZP
   name: Zentro-Biblioteca de Participación
   locations:
@@ -1051,6 +1241,8 @@
     emails:
     - biblioteca.participacion@pamplona.es
     url: https://www.navarra.es/es/w/centro/biblioteca-y-centro-documental-de-participacion-ciudadana
+    latitude: 42.81763
+    longitude: -1.64734
 - code: BMN/BB1
   name: Bibliobús 1 (Tierra Estella)
   locations:
@@ -1061,3 +1253,5 @@
     emails:
     - bibliobus@navarra.es
     url: https://www.navarra.es/es/w/centro/bibliobus-tierra-estella
+    latitude: 42.80943
+    longitude: -1.67521

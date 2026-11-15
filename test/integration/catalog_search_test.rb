@@ -105,6 +105,16 @@ class CatalogSearchTest < ActionDispatch::IntegrationTest
       assert_select ".copies details:not([open])", minimum: 10
     end
 
+    test "gives the browser what it needs to sort the copies by distance" do
+      get record_path("554980")
+
+      assert_select ".copies button[data-sort-by-distance][hidden]", /Ordenar por cercanía/
+      san_pedro = css_select(".copies details").find { it.at("summary").text.include?("Pamplona-San Pedro") }
+      location = LibraryDirectory.find("BPN/BP21").locations.sole
+      assert_equal [ [ location.latitude, location.longitude ] ], JSON.parse(san_pedro["data-coordinates"])
+      assert_select ".copies details [data-distance]", minimum: 10
+    end
+
     test "goes back to the search from a record, but not to the record itself" do
       get record_path("554980"), headers: { "HTTP_REFERER" => root_url(q: "Patria") }
       assert_select "a.back[href='#{root_url(q: "Patria")}']"

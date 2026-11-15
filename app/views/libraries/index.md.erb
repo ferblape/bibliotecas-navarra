@@ -19,6 +19,9 @@ Sin dirección en el directorio de bibliotecas de navarra.es.
 <% if location.address %>
 - Dirección: <%== location.address %>
 - Cómo llegar: <%== location.map_url %>
+<% if location.latitude %>
+- Coordenadas: <%= location.latitude %>, <%= location.longitude %>
+<% end %>
 <% end %>
 <% if location.phones.any? %>
 - Teléfono: <%== location.phones.join(", ") %>

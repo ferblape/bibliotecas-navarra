@@ -1,9 +1,10 @@
 require "net/http"
 
 class LibraryDirectory
-  # Reads the directory of libraries of navarra.es and matches its centres with the libraries
-  # of the OPAC by name. config/library_overrides.yml gives the centres of the libraries whose
-  # names do not match, and runs in GitHub Actions monthly, so changes arrive as pull requests.
+  # Reads the directory of libraries of navarra.es, matches its centres with the libraries of
+  # the OPAC by name and finds their coordinates with CartoCiudad. config/library_overrides.yml
+  # gives the centres whose names do not match and the coordinates the geocoder gets wrong.
+  # It runs in GitHub Actions monthly, so changes arrive as pull requests.
   class Import
     HOST = "https://www.navarra.es"
     LISTING_PATH = "/es/bibliotecas/directorio/-/search/filter/0/sort/%<sort>s/facet/0/tag/0/date/0/rpp/20/page/%<page>d"
@@ -13,7 +14,8 @@ class LibraryDirectory
     PAUSE = 1
 
     def initialize(overrides: YAML.load_file(OVERRIDES_PATH))
-      @overrides = overrides
+      @centres = overrides.fetch("centres", {})
+      @coordinates = overrides.fetch("coordinates", {})
     end
 
     def libraries(opac_libraries = Catalog.libraries)
@@ -25,11 +27,15 @@ class LibraryDirectory
     end
 
     def centre_slugs(library, centres)
-      return Array(@overrides[library.code]) if @overrides.key?(library.code)
+      return Array(@centres[library.code]) if @centres.key?(library.code)
 
       # "Altsasu/Alsasua" matches "Alsasua", and "Aurizberri/Espinal" matches "Aurizberri - Espinal".
       names = [ library.name, *library.name.split(%r{\s*/\s*|\s+-\s+}) ].map { normalize(it) }
       centres.select { names.include?(normalize(it.name)) }.map(&:slug).first(1)
+    end
+
+    def coordinates(slug, address)
+      @coordinates[slug] || (CartoCiudad.coordinates(address) if address)
     end
 
     private
@@ -38,7 +44,9 @@ class LibraryDirectory
       end
 
       def location(slug)
-        CentrePage.new(fetch("/es/w/centro/#{slug}"), slug:).location
+        location = CentrePage.new(fetch("/es/w/centro/#{slug}"), slug:).location
+        latitude, longitude = coordinates(slug, location.address)
+        location.with(latitude:, longitude:)
       end
 
       def normalize(name)

@@ -18,7 +18,11 @@ class LibraryDirectory
     end
   end
 
-  Location = Data.define(:name, :address, :phones, :emails, :url) do
+  Location = Data.define(:name, :address, :phones, :emails, :url, :latitude, :longitude) do
+    def initialize(latitude: nil, longitude: nil, **fields)
+      super
+    end
+
     def map_url
       "https://www.google.com/maps/search/?api=1&query=#{CGI.escape(address)}" if address
     end

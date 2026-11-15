@@ -53,6 +53,8 @@ class McpTest < ActionDispatch::IntegrationTest
     assert_equal "Calle Virgen del Río, s/n, 31014 Pamplona / Iruña", location[:address]
     assert_equal [ "948136664" ], location[:phones]
     assert_match %r{\Ahttps://www.google.com/maps/search/}, location[:map_url]
+    assert_in_delta 42.82, location[:latitude], 0.01
+    assert_in_delta(-1.64, location[:longitude], 0.01)
   end
 
   test "searches the catalog" do
