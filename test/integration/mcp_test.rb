@@ -38,6 +38,38 @@ class McpTest < ActionDispatch::IntegrationTest
     assert_match "Invalid arguments", result[:content].first[:text]
   end
 
+  test "shows a record with its copies" do
+    cache_record
+
+    result = call_tool("get_record", id: "554980")
+
+    assert_equal "Patria", result[:structuredContent][:title]
+    assert_equal "http://www.example.com/records/554980", result[:structuredContent][:url]
+    assert_equal 87, result[:structuredContent][:copies].size
+    assert_equal({ library_code: "BB1", library_name: "Bibliobús 1 (Tierra Estella)", branch: "Bibliobús 1 - Tierra Estella",
+                   location: "SALA DE PRESTAMO", status: "Prestable domicilio", call_number: "N ARA", format: "Libros",
+                   availability: "Disponible", available: true },
+                 result[:structuredContent][:copies].first)
+  end
+
+  test "shows the copies of a record in one library" do
+    cache_record
+
+    copies = call_tool("get_record", id: "554980", library: "BPN/BP21")[:structuredContent][:copies]
+
+    assert_not_empty copies
+    assert copies.all? { it[:library_name] == "Pamplona-San Pedro" }
+  end
+
+  test "tells the agent when a library does not exist" do
+    cache_record
+
+    result = call_tool("get_record", id: "554980", library: "BPN/XX99")
+
+    assert result[:isError]
+    assert_match "list_libraries", result[:content].first[:text]
+  end
+
   test "tells the agent when the catalog is unavailable" do
     Rails.cache.clear
     result = with_opac_host("localhost") { call_tool("list_libraries") }
@@ -47,6 +79,10 @@ class McpTest < ActionDispatch::IntegrationTest
   end
 
   private
+    def cache_record
+      Rails.cache.write([ "catalog", "record", "554980" ], Opac::RecordPage.new(opac_fixture("record")).record)
+    end
+
     def call_tool(name, arguments = {})
       mcp_request("tools/call", name:, arguments:)
       assert_response :success

@@ -1,7 +1,7 @@
 # Answers Model Context Protocol requests from AI agents. Each request stands on its own
 # (no MCP session is kept), so any process can answer it.
 class McpController < ActionController::API
-  TOOLS = [ ListLibrariesTool, SearchCatalogTool ].freeze
+  TOOLS = [ ListLibrariesTool, SearchCatalogTool, GetRecordTool ].freeze
 
   def create
     status, headers, body = transport.handle_request(request)

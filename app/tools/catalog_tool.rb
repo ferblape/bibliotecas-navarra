@@ -8,7 +8,7 @@ class CatalogTool < MCP::Tool
     def call(server_context:, **arguments)
       answer(server_context:, **arguments)
     rescue Catalog::Unavailable
-      MCP::Tool::Response.new([ { type: "text", text: UNAVAILABLE } ], error: true)
+      error UNAVAILABLE
     end
 
     private
@@ -22,6 +22,10 @@ class CatalogTool < MCP::Tool
 
       def respond(data)
         MCP::Tool::Response.new([ { type: "text", text: data.to_json } ], structured_content: data)
+      end
+
+      def error(message)
+        MCP::Tool::Response.new([ { type: "text", text: message } ], error: true)
       end
   end
 end
