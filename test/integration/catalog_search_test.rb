@@ -94,6 +94,14 @@ class CatalogSearchTest < ActionDispatch::IntegrationTest
       assert_select ".copies details:not([open])", minimum: 10
     end
 
+    test "goes back to the search from a record, but not to the record itself" do
+      get record_path("554980"), headers: { "HTTP_REFERER" => root_url(q: "Patria") }
+      assert_select "a.back[href='#{root_url(q: "Patria")}']"
+
+      get record_path("554980"), headers: { "HTTP_REFERER" => record_url("554980") }
+      assert_select "a.back[href='#{root_path}']"
+    end
+
     private
       def results_total
         css_select(".results-count").first.text[/[\d.]+/].delete(".").to_i

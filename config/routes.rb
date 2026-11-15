@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   root "searches#index"
-  resources :records, only: :show
+  resources :records, only: :show do
+    resource :bookmark, only: %i[ create destroy ], module: :records
+  end
+  resources :lists, path: "listas", only: :show do
+    resource :selection, only: %i[ create destroy ], module: :lists
+  end
 end

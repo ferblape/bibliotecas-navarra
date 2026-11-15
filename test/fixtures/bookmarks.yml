@@ -1,0 +1,21 @@
+patria:
+  list: mine
+  record_id: "554980"
+  title: Patria
+  author: Aramburu, Fernando (1959- )
+  isbn: 978-84-9066-319-6
+  created_at: <%= 1.day.ago.to_fs(:db) %>
+
+anos_lentos:
+  list: mine
+  record_id: "385519"
+  title: Años lentos
+  author: Aramburu, Fernando (1959- )
+  isbn: 978-84-8383-380-3
+  created_at: <%= 1.hour.ago.to_fs(:db) %>
+
+madre_patria:
+  list: someone_elses
+  record_id: "640001"
+  title: "Madre patria : desmontando la leyenda negra"
+  author: Gullo, Marcelo (1963-)

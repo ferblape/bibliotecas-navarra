@@ -18,4 +18,15 @@ class ApplicationController < ActionController::Base
       @library ||= Catalog.libraries.find { it.code == cookies[:library] } if cookies[:library].present?
     end
     helper_method :library
+
+    # The bookmarks list of this browser. Knowing its URL is enough to use it.
+    def current_list
+      @current_list ||= List.find_by(token: cookies[:list]) if cookies[:list].present?
+    end
+    helper_method :current_list
+
+    def remember_list(list)
+      cookies.permanent[:list] = { value: list.token, httponly: true }
+      @current_list = list
+    end
 end

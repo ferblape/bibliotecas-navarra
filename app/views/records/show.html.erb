@@ -1,6 +1,6 @@
 <% content_for :title, "#{@record.title} · Bibliotecas de Navarra" %>
 
-<p><%= link_to "← Volver", request.referer.presence || root_path, class: "back" %></p>
+<p><%= link_to "← Volver", back_url, class: "back" %></p>
 
 <article class="record">
   <%= render "cover", record: @record %>
@@ -15,7 +15,14 @@
         <dd><%= value %></dd>
       <% end %>
     </dl>
-    <p><%= link_to "Ver en el catálogo oficial", @record.opac_url, target: "_blank", rel: "noopener" %></p>
+    <div class="record__actions">
+      <% if current_list&.bookmarked?(@record.id) %>
+        <%= button_to "★ Quitar de mi lista", record_bookmark_path(@record.id), method: :delete, class: "button button--saved" %>
+      <% else %>
+        <%= button_to "☆ Guardar en mi lista", record_bookmark_path(@record.id), class: "button" %>
+      <% end %>
+      <%= link_to "Ver en el catálogo oficial", @record.opac_url, target: "_blank", rel: "noopener" %>
+    </div>
   </div>
 </article>
 

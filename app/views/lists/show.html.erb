@@ -1,0 +1,43 @@
+<% content_for :title, "#{@list == current_list ? "Mi lista" : "Lista guardada"} · Bibliotecas de Navarra" %>
+<% content_for :head, tag.meta(name: "robots", content: "noindex") %>
+
+<% if @list == current_list %>
+  <h1>Mi lista</h1>
+
+  <section class="list-address">
+    <label for="list_url">Guarda esta dirección para volver a tu lista desde cualquier navegador. Quien la conozca podrá verla y cambiarla.</label>
+    <input id="list_url" type="text" value="<%= list_url(@list) %>" readonly>
+    <%= button_to "Olvidar esta lista en este navegador", list_selection_path(@list), method: :delete, class: "button button--quiet" %>
+  </section>
+<% else %>
+  <h1>Lista guardada</h1>
+
+  <section class="list-address">
+    <p>
+      Esta no es la lista de este navegador.
+      Si la usas, lo que guardes irá aquí<%= " y dejarás de ver la tuya, salvo que tengas guardada su dirección" if current_list %>.
+    </p>
+    <%= button_to "Usar esta lista en este navegador", list_selection_path(@list), class: "button" %>
+  </section>
+<% end %>
+
+<% if @list.bookmarks.any? %>
+  <ol class="results">
+    <% @list.bookmarks.each do |bookmark| %>
+      <li class="result bookmark">
+        <%= render "records/cover", record: bookmark %>
+        <div class="bookmark__body">
+          <h2 class="result__title"><%= link_to bookmark.title, record_path(bookmark.record_id) %></h2>
+          <% if bookmark.author %>
+            <p class="author"><%= bookmark.author %></p>
+          <% end %>
+        </div>
+        <% if @list == current_list %>
+          <%= button_to "Quitar", record_bookmark_path(bookmark.record_id), method: :delete, class: "button button--quiet" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+<% else %>
+  <p class="no-results">Aún no hay nada guardado. En la ficha de un libro, pulsa «Guardar en mi lista».</p>
+<% end %>

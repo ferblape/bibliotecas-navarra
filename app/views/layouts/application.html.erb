@@ -29,9 +29,21 @@
         Bibliotecas de Navarra
       <% end %>
       <span class="site-header__tagline">Busca en el catálogo de las Bibliotecas Públicas de Navarra</span>
+      <% if current_list %>
+        <%= link_to "Mi lista", list_path(current_list), class: "site-header__list" %>
+      <% end %>
     </header>
 
     <main>
+      <% if flash[:new_list] && current_list %>
+        <p class="notice">
+          Hemos creado tu lista. Guarda esta dirección: es la única forma de volver a ella desde otro navegador
+          o si se borran las cookies: <%= link_to list_url(current_list), list_url(current_list) %>
+        </p>
+      <% elsif notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+
       <%= yield %>
     </main>
 
