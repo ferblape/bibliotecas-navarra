@@ -13,3 +13,9 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
   end
 end
+
+class ActiveSupport::TestCase
+  def opac_fixture(name)
+    file_fixture("opac/#{name}.html").read
+  end
+end
