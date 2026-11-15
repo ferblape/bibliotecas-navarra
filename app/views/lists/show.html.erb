@@ -7,6 +7,12 @@
   <section class="list-address">
     <label for="list_url">Guarda esta dirección para volver a tu lista desde cualquier navegador. Quien la conozca podrá verla y cambiarla.</label>
     <input id="list_url" type="text" value="<%= list_url(@list) %>" readonly>
+    <%# Shown by application.js when the browser can share or copy. %>
+    <div class="list-address__actions" data-share-url="<%= list_url(@list) %>" data-share-title="Mi lista · Bibliotecas de Navarra">
+      <button type="button" class="button" data-share hidden>Compartir</button>
+      <button type="button" class="button button--quiet" data-copy hidden>Copiar dirección</button>
+      <span class="list-address__hint" data-bookmark-hint hidden></span>
+    </div>
     <%= button_to "Olvidar esta lista en este navegador", list_selection_path(@list), method: :delete, class: "button button--quiet" %>
   </section>
 <% else %>

@@ -11,6 +11,24 @@ class BookmarksTest < ActionDispatch::IntegrationTest
     assert_equal lists(:mine).token, cookies[:list]
   end
 
+  test "offers to share or copy the address of the list of this browser" do
+    get list_path(lists(:mine))
+
+    assert_select ".list-address [data-share-url='#{list_url(lists(:mine))}']" do
+      assert_select "button[data-share][hidden]", "Compartir"
+      assert_select "button[data-copy][hidden]", "Copiar dirección"
+      assert_select "[data-bookmark-hint][hidden]"
+    end
+  end
+
+  test "does not offer to share a list of someone else" do
+    cookies[:list] = lists(:mine).token
+
+    get list_path(lists(:someone_elses))
+
+    assert_select "[data-share-url]", 0
+  end
+
   test "asks before replacing the list of this browser" do
     cookies[:list] = lists(:mine).token
 

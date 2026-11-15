@@ -316,6 +316,16 @@ h1, h2 { line-height: 1.25; }
 
 .list-address p { margin: 0; }
 
+.list-address__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.list-address__actions:not(:has(:not([hidden]))) { display: none; }
+.list-address__hint { color: var(--muted); font-size: 0.9rem; }
+
 .list-address input {
   width: 100%;
   font: inherit;
