@@ -15,6 +15,7 @@ require "action_view/railtie"
 require "rails/test_unit/railtie"
 
 require_relative "../lib/middleware/fly_client_ip"
+require_relative "../lib/middleware/block_crawlers"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -39,5 +40,13 @@ module BibliotecasNavarra
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.middleware.insert_after ActionDispatch::RemoteIp, FlyClientIp
+    config.middleware.insert_after ActionDispatch::Static, BlockCrawlers
+
+    # Nothing here should end up in a search engine, and the sites pages link to
+    # (the OPAC, Open Library covers) should not learn where visitors came from.
+    config.action_dispatch.default_headers.merge!(
+      "X-Robots-Tag" => "noindex, nofollow, noarchive",
+      "Referrer-Policy" => "no-referrer"
+    )
   end
 end
