@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
 
+  # Every search or record not in the cache costs a session in the OPAC.
+  rate_limit to: 30, within: 1.minute, with: -> { render "shared/too_many_requests", status: :too_many_requests }
+
   rescue_from Catalog::Unavailable do
     render "shared/unavailable", status: :service_unavailable
   end

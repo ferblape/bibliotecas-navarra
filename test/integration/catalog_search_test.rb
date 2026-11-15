@@ -9,6 +9,17 @@ class CatalogSearchTest < ActionDispatch::IntegrationTest
     assert_select "h1", /no está disponible/
   end
 
+  test "limits the requests of each visitor" do
+    Rails.cache.clear
+    with_opac_host("localhost") do
+      30.times { get root_path(q: "Patria") }
+      assert_response :service_unavailable
+
+      get root_path(q: "Patria")
+      assert_response :too_many_requests
+    end
+  end
+
   class LiveTest < ActionDispatch::IntegrationTest
     SAN_PEDRO = "BPN/BP21"
 
