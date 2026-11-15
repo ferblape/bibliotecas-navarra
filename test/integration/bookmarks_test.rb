@@ -51,6 +51,14 @@ class BookmarksTest < ActionDispatch::IntegrationTest
     assert_not lists(:mine).bookmarked?("554980")
   end
 
+  test "serves old browsers too" do
+    old_ipad = "Mozilla/5.0 (iPad; CPU OS 12_5_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1"
+
+    get list_path(lists(:mine)), headers: { "User-Agent" => old_ipad }
+
+    assert_response :success
+  end
+
   test "does not find a list with an unknown token" do
     get list_path("unknown")
 
