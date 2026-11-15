@@ -20,22 +20,23 @@ module Catalog
 
   def search(query, field: :any, library: nil, page: 1)
     cached [ "search", query, field, library, page ], expires_in: 10.minutes do
-      session = Opac::Session.open(ACC: 101)
-      html = session.post(**SEARCH, FIELDS.fetch(field) => query, subcat: library || ALL_LIBRARIES)
-      html = session.get(ACC: 161, DOC: (page - 1) * Opac::Results::PER_PAGE + 1) if page > 1
+      html = Opac::Session.open(ACC: 101) do |session|
+        first_page = session.post(**SEARCH, FIELDS.fetch(field) => query, subcat: library || ALL_LIBRARIES)
+        page > 1 ? session.get(ACC: 161, DOC: (page - 1) * Opac::Results::PER_PAGE + 1) : first_page
+      end
       Opac::ResultsPage.new(html, page:).results
     end
   end
 
   def record(id)
     cached [ "record", id ], expires_in: 10.minutes do
-      Opac::RecordPage.new(Opac::Session.open(TITN: id).page).record
+      Opac::RecordPage.new(Opac::Session.open(TITN: id, &:page)).record
     end
   end
 
   def libraries
     cached [ "libraries" ], expires_in: 1.day do
-      Opac::LibrariesPage.new(Opac::Session.open(ACC: 101).page).libraries
+      Opac::LibrariesPage.new(Opac::Session.open(ACC: 101, &:page)).libraries
     end
   end
 

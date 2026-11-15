@@ -37,16 +37,22 @@ class Opac::SessionTest < ActiveSupport::TestCase
       first = Opac::ResultsPage.new(session.post(search)).results
       second = Opac::ResultsPage.new(session.get(ACC: 161, DOC: 11), page: 2).results
 
-    assert_operator first.total, :>, 10
-    assert_equal first.total, second.total
-    assert_not_equal first.records.map(&:id), second.records.map(&:id)
-  end
+      assert_operator first.total, :>, 10
+      assert_equal first.total, second.total
+      assert_not_equal first.records.map(&:id), second.records.map(&:id)
+    end
 
-  test "opens a record by its id" do
-    record = Opac::RecordPage.new(Opac::Session.open(TITN: 554980).page).record
+    test "closes the session at the end of the block" do
+      session = Opac::Session.open(ACC: 101) { it }
 
-    assert_equal "554980", record.id
-    assert_equal "Patria", record.title
-  end
+      assert_includes session.get(ACC: 101), "timeout.htm"
+    end
+
+    test "opens a record by its id" do
+      record = Opac::RecordPage.new(Opac::Session.open(TITN: 554980).page).record
+
+      assert_equal "554980", record.id
+      assert_equal "Patria", record.title
+    end
   end
 end

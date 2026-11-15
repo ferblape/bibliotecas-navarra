@@ -16,9 +16,17 @@ module Opac
     attr_reader :path, :page
 
     # Opens a session from an entry URL (for example `ACC: 101` for the home page or
-    # `TITN: id` for a record). The OPAC answers with a meta refresh to the session URL.
+    # `TITN: id` for a record). With a block, yields the session and closes it afterwards,
+    # returning the value of the block: the OPAC refuses new sessions when too many are open.
     def self.open(params)
-      new(params)
+      session = new(params)
+      return session unless block_given?
+
+      begin
+        yield session
+      ensure
+        session.close
+      end
     end
 
     # The entry page answers with a meta refresh to the session URL. Without it, the
@@ -44,6 +52,13 @@ module Opac
 
     def post(params)
       request Net::HTTP::Post.new(path).tap { it.body = form_data(params) }
+    end
+
+    def close
+      get(ACC: 301)
+    ensure
+      @http&.finish
+      @http = nil
     end
 
     private
