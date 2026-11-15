@@ -38,6 +38,12 @@ class McpTest < ActionDispatch::IntegrationTest
     assert tools.all? { it.dig("annotations", "readOnlyHint") }
   end
 
+  test "tells clients that it opens no event stream" do
+    get mcp_path, headers: { "Accept" => "text/event-stream" }
+
+    assert_response :method_not_allowed
+  end
+
   test "lists the libraries" do
     result = call_tool("list_libraries")
 

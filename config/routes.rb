@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resource :selection, only: %i[ create destroy ], module: :lists
   end
 
-  # The catalog for AI agents, over the Model Context Protocol (Streamable HTTP).
-  post "mcp" => "mcp#create"
+  # The catalog for AI agents, over the Model Context Protocol (Streamable HTTP). The protocol
+  # also uses GET and DELETE on the same URL, and the MCP transport answers them.
+  match "mcp" => "mcp#create", via: %i[ get post delete ]
 end
