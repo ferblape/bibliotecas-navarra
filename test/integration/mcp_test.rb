@@ -11,6 +11,17 @@ class McpTest < ActionDispatch::IntegrationTest
     Rails.cache.clear
   end
 
+  test "introduces itself and its read-only tools" do
+    mcp_request("initialize", { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "test", version: "1.0" } })
+    assert_response :success
+    assert_match "Bibliotecas Públicas de Navarra", response.parsed_body.dig("result", "instructions")
+
+    mcp_request("tools/list")
+    tools = response.parsed_body.dig("result", "tools")
+    assert_equal %w[ list_libraries search_catalog get_record ], tools.map { it["name"] }
+    assert tools.all? { it.dig("annotations", "readOnlyHint") }
+  end
+
   test "lists the libraries" do
     result = call_tool("list_libraries")
 

@@ -2,6 +2,12 @@
 # (no MCP session is kept), so any process can answer it.
 class McpController < ActionController::API
   TOOLS = [ ListLibrariesTool, SearchCatalogTool, GetRecordTool ].freeze
+  INSTRUCTIONS = <<~TEXT.squish
+    Live catalog of the Bibliotecas Públicas de Navarra (public libraries of Navarra, Spain). Search it with
+    search_catalog, then use get_record to see where a record has copies and whether they are available. To answer
+    about one library, find its code with list_libraries and pass it to the other tools. The catalog is slow and
+    fragile: avoid repeating searches and paging further than needed.
+  TEXT
 
   # Stricter than the web: agents fire requests in bursts, and all claude.ai users reach us from
   # a few shared addresses, so the limit of all agents together is what spares the OPAC.
@@ -30,7 +36,7 @@ class McpController < ActionController::API
     end
 
     def server
-      MCP::Server.new(name: "bibliotecas-navarra", title: "Bibliotecas Públicas de Navarra", version: "1.0.0", tools: TOOLS,
-        server_context: { base_url: request.base_url })
+      MCP::Server.new(name: "bibliotecas-navarra", title: "Bibliotecas Públicas de Navarra", version: "1.0.0",
+        instructions: INSTRUCTIONS, tools: TOOLS, server_context: { base_url: request.base_url })
     end
 end
