@@ -26,6 +26,7 @@ class SuggestionTest < ActiveSupport::TestCase
   end
 
   test "suggests nothing when Google Books cannot be reached" do
+    Rails.cache.clear
     with_google_books(host: "localhost", api_key: "key") do
       assert_nil Suggestion.for("ana cadabra")
     end
