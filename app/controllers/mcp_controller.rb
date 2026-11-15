@@ -1,7 +1,7 @@
 # Answers Model Context Protocol requests from AI agents. Each request stands on its own
 # (no MCP session is kept), so any process can answer it.
 class McpController < ActionController::API
-  TOOLS = [ ListLibrariesTool ].freeze
+  TOOLS = [ ListLibrariesTool, SearchCatalogTool ].freeze
 
   def create
     status, headers, body = transport.handle_request(request)
@@ -20,6 +20,7 @@ class McpController < ActionController::API
     end
 
     def server
-      MCP::Server.new(name: "bibliotecas-navarra", title: "Bibliotecas Públicas de Navarra", version: "1.0.0", tools: TOOLS)
+      MCP::Server.new(name: "bibliotecas-navarra", title: "Bibliotecas Públicas de Navarra", version: "1.0.0", tools: TOOLS,
+        server_context: { base_url: request.base_url })
     end
 end
