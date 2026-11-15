@@ -5,7 +5,8 @@ require "rails/test_help"
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+    # Live tests run in one process so they do not open many OPAC sessions at once.
+    parallelize(workers: ENV["OPAC_LIVE"] ? 1 : :number_of_processors)
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
