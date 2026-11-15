@@ -1,7 +1,24 @@
 #!/bin/bash -e
 
+# Fly mounts the storage volume owned by root. Hand it to the rails user and
+# run everything else as that user.
+if [ "$(id -u)" == "0" ]; then
+  chown rails:rails /rails/storage
+  export HOME=/home/rails
+  exec setpriv --reuid=rails --regid=rails --init-groups "$0" "$@"
+fi
+
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  # With a Tigris bucket, restore the databases the volume lacks and back them
+  # up with Litestream while the server runs.
+  if [ -n "$BUCKET_NAME" ]; then
+    for database in /rails/storage/production.sqlite3 /rails/storage/production_cache.sqlite3; do
+      litestream restore -config config/litestream.yml -if-db-not-exists -if-replica-exists "$database"
+    done
+    set -- litestream replicate -config config/litestream.yml -exec "$*"
+  fi
+
   ./bin/rails db:prepare
 fi
 

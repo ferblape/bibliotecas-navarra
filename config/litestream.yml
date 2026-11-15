@@ -1,0 +1,18 @@
+# Backs up the production databases to the Tigris bucket created with
+# `fly storage create`, which also sets BUCKET_NAME, AWS_ACCESS_KEY_ID and
+# AWS_SECRET_ACCESS_KEY as secrets. bin/docker-entrypoint runs Litestream.
+dbs:
+  - path: /rails/storage/production.sqlite3
+    replica:
+      type: s3
+      bucket: ${BUCKET_NAME}
+      path: production
+      endpoint: fly.storage.tigris.dev
+      region: auto
+  - path: /rails/storage/production_cache.sqlite3
+    replica:
+      type: s3
+      bucket: ${BUCKET_NAME}
+      path: production_cache
+      endpoint: fly.storage.tigris.dev
+      region: auto
