@@ -4,6 +4,8 @@ module Opac
   # A browsing session in the OPAC. The OPAC keeps state (chosen library, last search)
   # on the server, tied to a token in the URL path and to the GN/GNW cookies.
   class Session
+    class Refused < StandardError; end
+
     ENTRY_PATH = "/opac/abnetcl.exe"
     ENCODING = Encoding::ISO_8859_1
     USER_AGENT = "BibliotecasNavarra/1.0 (unofficial catalog search)"
@@ -19,11 +21,21 @@ module Opac
       new(params)
     end
 
+    # The entry page answers with a meta refresh to the session URL. Without it, the
+    # OPAC refused to open a session (for example, an "Error 205" page when it is busy).
+    def self.session_url(entry_page)
+      entry_page[/URL=([^"]+)"/, 1] or raise Refused, "The OPAC did not open a session"
+    end
+
+    def self.entry_url(params)
+      "https://#{host}#{ENTRY_PATH}?#{URI.encode_www_form(params)}"
+    end
+
     def initialize(params)
       @cookies = {}
-      refresh_url = request(Net::HTTP::Get.new("#{ENTRY_PATH}?#{form_data(params)}"))[/URL=([^"]+)"/, 1]
-      @path = URI(refresh_url).path
-      @page = request Net::HTTP::Get.new(refresh_url)
+      session_url = self.class.session_url(request(Net::HTTP::Get.new("#{ENTRY_PATH}?#{form_data(params)}")))
+      @path = URI(session_url).path
+      @page = request Net::HTTP::Get.new(session_url)
     end
 
     def get(params)

@@ -6,10 +6,16 @@ module Opac
     end
 
     def results
+      raise UnexpectedPage, "Not a search result" unless results_page?
+
       Results.new(records: @document.css("li.c-docs_unit").map { record(it) }, total:, page: @page)
     end
 
     private
+      def results_page?
+        @document.at_css("li.c-docs_unit") || @document.at_xpath("//*[contains(text(), 'NO recupera resultados')]")
+      end
+
       # The paginator reads "1 / 10 de 11"; a search without results has no paginator.
       def total
         @document.at_css("p.c-paginator_count")&.text.to_s[/de (\d+)/, 1].to_i

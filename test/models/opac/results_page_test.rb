@@ -37,6 +37,10 @@ class Opac::ResultsPageTest < ActiveSupport::TestCase
     assert_empty results.records
   end
 
+  test "rejects a page that is not a search result" do
+    assert_raises(Opac::UnexpectedPage) { Opac::ResultsPage.new(opac_fixture("home")).results }
+  end
+
   test "knows the pages around the current one" do
     first = Opac::ResultsPage.new(opac_fixture("results_all")).results
     second = Opac::ResultsPage.new(opac_fixture("results_all"), page: 2).results

@@ -5,7 +5,10 @@ require "net/http"
 module Catalog
   class Unavailable < StandardError; end
 
-  OPAC_ERRORS = [ Net::HTTPExceptions, Timeout::Error, SocketError, SystemCallError, OpenSSL::SSL::SSLError, EOFError ].freeze
+  OPAC_ERRORS = [
+    Opac::Session::Refused, Opac::UnexpectedPage,
+    Net::HTTPExceptions, Timeout::Error, SocketError, SystemCallError, OpenSSL::SSL::SSLError, EOFError
+  ].freeze
   ALL_LIBRARIES = "/"
   SEARCH = { ACC: 131, START: 1, FORM: 2, xsnf12: 0 }.freeze
 

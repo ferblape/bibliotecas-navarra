@@ -5,6 +5,10 @@ class Opac::RecordPageTest < ActiveSupport::TestCase
     @record = Opac::RecordPage.new(opac_fixture("record")).record
   end
 
+  test "rejects a page that is not a record" do
+    assert_raises(Opac::UnexpectedPage) { Opac::RecordPage.new(opac_fixture("home")).record }
+  end
+
   test "reads the fields of the record" do
     assert_equal "554980", @record.id
     assert_equal "Patria", @record.title

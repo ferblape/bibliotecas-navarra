@@ -4,6 +4,7 @@ class CatalogTest < ActiveSupport::TestCase
   SAN_PEDRO = "BPN/BP21"
 
   test "raises Unavailable when the OPAC cannot be reached" do
+    Rails.cache.clear
     with_opac_host("localhost") do
       assert_raises(Catalog::Unavailable) { Catalog.search("Patria") }
     end

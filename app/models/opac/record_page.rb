@@ -7,6 +7,8 @@ module Opac
     end
 
     def record
+      raise UnexpectedPage, "Not a record" unless @document.at_css("p.c-docs_marc")
+
       marc = MarcFields.new(@document)
       Record.new(
         **marc.record_fields,

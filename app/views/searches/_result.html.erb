@@ -1,0 +1,12 @@
+<li class="result">
+  <%= render "records/cover", record: %>
+  <div>
+    <h2 class="result__title"><%= link_to record.title, record_path(record.id) %></h2>
+    <% if record.author %>
+      <p class="author"><%= record.author %></p>
+    <% end %>
+    <p class="result__details">
+      <%= safe_join [ record.publication, record.isbn && "ISBN #{record.isbn}", record.material ].compact, " · " %>
+    </p>
+  </div>
+</li>

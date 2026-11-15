@@ -1,0 +1,11 @@
+<% if results.total_pages > 1 %>
+  <nav class="pagination" aria-label="Páginas">
+    <% if results.previous_page? %>
+      <%= link_to "← Anterior", request.query_parameters.merge(page: results.page - 1), rel: "prev" %>
+    <% end %>
+    <span>Página <%= results.page %> de <%= number_es results.total_pages %></span>
+    <% if results.next_page? %>
+      <%= link_to "Siguiente →", request.query_parameters.merge(page: results.page + 1), rel: "next" %>
+    <% end %>
+  </nav>
+<% end %>

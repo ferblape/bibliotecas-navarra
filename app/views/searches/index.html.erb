@@ -1,0 +1,32 @@
+<% content_for :title, @results ? "#{params[:q]} · Bibliotecas de Navarra" : "Bibliotecas de Navarra" %>
+
+<%= form_with url: root_path, method: :get, class: "search-form" do |form| %>
+  <div class="search-form__query">
+    <%= form.label :q, "Buscar", class: "visually-hidden" %>
+    <%= form.select :field, field_options, { selected: params[:field] }, aria: { label: "Buscar en" } %>
+    <%= form.search_field :q, value: params[:q], placeholder: "Título, autor, materia…", required: true, autofocus: @results.nil? %>
+    <%= form.button "Buscar", name: nil %>
+  </div>
+  <div class="search-form__library">
+    <%= form.label :library, "Biblioteca" %>
+    <%= form.select :library, @libraries.map { [ it.name, it.code ] }, { include_blank: "Todas las bibliotecas", selected: library&.code } %>
+  </div>
+<% end %>
+
+<% if @results %>
+  <% if @results.records.any? %>
+    <p class="results-count">
+      <%= number_es @results.total %> resultados<%= " en #{library.name}" if library %>
+    </p>
+
+    <ol class="results">
+      <%= render partial: "result", collection: @results.records, as: :record %>
+    </ol>
+
+    <%= render "pagination", results: @results %>
+  <% else %>
+    <p class="no-results">
+      No hay resultados para «<%= params[:q] %>»<%= " en #{library.name}" if library %>.
+    </p>
+  <% end %>
+<% end %>

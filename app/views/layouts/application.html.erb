@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <title><%= content_for(:title) || "Bibliotecas Navarra" %></title>
+    <title><%= content_for(:title) || "Bibliotecas de Navarra" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Bibliotecas Navarra">
+    <meta name="application-name" content="Bibliotecas de Navarra">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -24,6 +24,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="site-header">
+      <%= link_to root_path, class: "site-header__name" do %>
+        Bibliotecas de Navarra
+      <% end %>
+      <span class="site-header__tagline">Busca en el catálogo de las Bibliotecas Públicas de Navarra</span>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Los datos vienen del <%= link_to "catálogo de las Bibliotecas Públicas de Navarra", Opac::Session.entry_url(ACC: 101) %>,
+        consultado en el momento de cada búsqueda.
+      </p>
+      <p>Esta web no es un servicio oficial del Gobierno de Navarra ni de sus bibliotecas.</p>
+    </footer>
   </body>
 </html>

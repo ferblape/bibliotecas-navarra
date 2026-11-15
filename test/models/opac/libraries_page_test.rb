@@ -5,6 +5,10 @@ class Opac::LibrariesPageTest < ActiveSupport::TestCase
     @libraries = Opac::LibrariesPage.new(opac_fixture("home")).libraries
   end
 
+  test "rejects a page without libraries" do
+    assert_raises(Opac::UnexpectedPage) { Opac::LibrariesPage.new("<html><body>Error 205</body></html>").libraries }
+  end
+
   test "reads every library with its code and name" do
     san_pedro = @libraries.find { it.code == "BPN/BP21" }
 

@@ -1,0 +1,54 @@
+<% content_for :title, "#{@record.title} · Bibliotecas de Navarra" %>
+
+<p><%= link_to "← Volver", request.referer.presence || root_path, class: "back" %></p>
+
+<article class="record">
+  <%= render "cover", record: @record %>
+  <div>
+    <h1><%= @record.title %></h1>
+    <% if @record.responsibility %>
+      <p class="author"><%= @record.responsibility %></p>
+    <% end %>
+    <dl class="record__details">
+      <% { "Autor" => @record.author, "Publicación" => @record.publication, "ISBN" => @record.isbn, "Tipo" => @record.material }.compact.each do |label, value| %>
+        <dt><%= label %></dt>
+        <dd><%= value %></dd>
+      <% end %>
+    </dl>
+    <p><%= link_to "Ver en el catálogo oficial", @record.opac_url, target: "_blank", rel: "noopener" %></p>
+  </div>
+</article>
+
+<section class="copies">
+  <h2>Ejemplares</h2>
+  <% copies = @record.copies.group_by(&:library_code) %>
+  <% if library && copies.exclude?(library.copies_code) %>
+    <p class="no-results">No hay ejemplares en <%= library.name %>.</p>
+  <% end %>
+  <% copies.sort_by { |code, _| code == library&.copies_code ? 0 : 1 }.each do |code, library_copies| %>
+    <details <%= "open" if code == library&.copies_code %>>
+      <summary>
+        <span><%= library_copies.first.library_name %></span>
+        <span class="availability <%= "availability--available" if library_copies.any?(&:available?) %>">
+          <%= library_copies.count(&:available?) %> de <%= library_copies.size %> disponibles
+        </span>
+      </summary>
+      <table>
+        <thead>
+          <tr><th>Sucursal</th><th>Ubicación</th><th>Signatura</th><th>Préstamo</th><th>Estado</th></tr>
+        </thead>
+        <tbody>
+          <% library_copies.each do |copy| %>
+            <tr>
+              <td><%= copy.branch %></td>
+              <td><%= copy.location %></td>
+              <td><%= copy.call_number %></td>
+              <td><%= copy.status %></td>
+              <td class="<%= copy.available? ? "available" : "unavailable" %>"><%= copy.availability %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </details>
+  <% end %>
+</section>
