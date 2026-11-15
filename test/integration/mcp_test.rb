@@ -78,19 +78,43 @@ class McpTest < ActionDispatch::IntegrationTest
     assert_match "not available", result[:content].first[:text]
   end
 
+  test "limits the requests of each agent" do
+    10.times { mcp_request("tools/list") }
+    assert_response :success
+
+    mcp_request("tools/list")
+    assert_too_many_requests
+
+    mcp_request("tools/list", ip: "10.0.0.2")
+    assert_response :success
+  end
+
+  test "limits the requests of all agents together to spare the OPAC" do
+    6.times { |agent| 10.times { mcp_request("tools/list", ip: "10.0.0.#{agent + 1}") } }
+    assert_response :success
+
+    mcp_request("tools/list", ip: "10.0.0.7")
+    assert_too_many_requests
+  end
+
   private
+    def assert_too_many_requests
+      assert_response :too_many_requests
+      assert_match "Too many requests", response.parsed_body.dig("error", "message")
+    end
+
     def cache_record
       Rails.cache.write([ "catalog", "record", "554980" ], Opac::RecordPage.new(opac_fixture("record")).record)
     end
 
     def call_tool(name, arguments = {})
-      mcp_request("tools/call", name:, arguments:)
+      mcp_request("tools/call", { name:, arguments: })
       assert_response :success
       response.parsed_body.deep_symbolize_keys.fetch(:result)
     end
 
-    def mcp_request(method, params = {})
-      post mcp_path, params: { jsonrpc: "2.0", id: 1, method:, params: }.to_json,
+    def mcp_request(method, params = {}, ip: "10.0.0.1")
+      post mcp_path, params: { jsonrpc: "2.0", id: 1, method:, params: }.to_json, env: { "REMOTE_ADDR" => ip },
         headers: { "Content-Type" => "application/json", "Accept" => "application/json, text/event-stream" }
     end
 end

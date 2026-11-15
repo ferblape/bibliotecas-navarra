@@ -3,6 +3,11 @@
 class McpController < ActionController::API
   TOOLS = [ ListLibrariesTool, SearchCatalogTool, GetRecordTool ].freeze
 
+  # Stricter than the web: agents fire requests in bursts, and all claude.ai users reach us from
+  # a few shared addresses, so the limit of all agents together is what spares the OPAC.
+  rate_limit to: 10, within: 1.minute, name: "agent", with: -> { too_many_requests }
+  rate_limit to: 60, within: 1.minute, name: "all", by: -> { "all" }, with: -> { too_many_requests }
+
   def create
     status, headers, body = transport.handle_request(request)
     response.headers.merge!(headers)
@@ -11,6 +16,11 @@ class McpController < ActionController::API
   end
 
   private
+    def too_many_requests
+      render status: :too_many_requests,
+        json: { jsonrpc: "2.0", id: nil, error: { code: -32000, message: "Too many requests. Wait a minute before asking the catalog again." } }
+    end
+
     def transport
       MCP::Server::Transports::StreamableHTTPTransport.new(server, stateless: true, enable_json_response: true,
         serve_subscriptions_listen: false,
