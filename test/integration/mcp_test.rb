@@ -1,6 +1,22 @@
 require "test_helper"
 
+module McpRequests
+  private
+    def call_tool(name, arguments = {})
+      mcp_request("tools/call", { name:, arguments: })
+      assert_response :success
+      response.parsed_body.deep_symbolize_keys.fetch(:result)
+    end
+
+    def mcp_request(method, params = {}, ip: "10.0.0.1")
+      post mcp_path, params: { jsonrpc: "2.0", id: 1, method:, params: }.to_json, env: { "REMOTE_ADDR" => ip },
+        headers: { "Content-Type" => "application/json", "Accept" => "application/json, text/event-stream" }
+    end
+end
+
 class McpTest < ActionDispatch::IntegrationTest
+  include McpRequests
+
   SAN_PEDRO = Opac::Library.new(code: "BPN/BP21", name: "Pamplona-San Pedro")
 
   setup do
@@ -118,14 +134,20 @@ class McpTest < ActionDispatch::IntegrationTest
       Rails.cache.write([ "catalog", "record", "554980" ], Opac::RecordPage.new(opac_fixture("record")).record)
     end
 
-    def call_tool(name, arguments = {})
-      mcp_request("tools/call", { name:, arguments: })
-      assert_response :success
-      response.parsed_body.deep_symbolize_keys.fetch(:result)
+  class LiveTest < ActionDispatch::IntegrationTest
+    include McpRequests
+
+    setup do
+      skip "Set OPAC_LIVE=1 to run tests against the real OPAC" unless ENV["OPAC_LIVE"]
     end
 
-    def mcp_request(method, params = {}, ip: "10.0.0.1")
-      post mcp_path, params: { jsonrpc: "2.0", id: 1, method:, params: }.to_json, env: { "REMOTE_ADDR" => ip },
-        headers: { "Content-Type" => "application/json", "Accept" => "application/json, text/event-stream" }
+    test "searches a library and shows the copies of a record there" do
+      records = call_tool("search_catalog", query: "Patria Aramburu", library: SAN_PEDRO.code)[:structuredContent][:records]
+      assert_includes records.map { it[:id] }, "554980"
+
+      copies = call_tool("get_record", id: "554980", library: SAN_PEDRO.code)[:structuredContent][:copies]
+      assert_not_empty copies
+      assert copies.all? { it[:library_name] == SAN_PEDRO.name }
     end
+  end
 end
