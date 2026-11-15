@@ -55,12 +55,12 @@ No es un servicio oficial. Cada búsqueda consulta el OPAC en vivo; no copiamos 
 Hecho:
 - App Rails generada (Ruby 4.0.9, Rails 8.1.3; sin mailer, mailbox, action text, active storage, cable, jobs ni kamal).
 - Parsers en `app/models/opac/` con tests sobre HTML real (`test/fixtures/files/opac/`). `bin/rails test` y `bin/rubocop` en verde.
+- `Opac::Session` (`app/models/opac/session.rb`): `Opac::Session.open(ACC: 101)` o `open(TITN: id)` sigue el meta-refresh y deja la página de llegada en `#page`; `#get`/`#post` sobre la ruta de sesión, en UTF-8. El POST va a la ruta de sesión sin el `/NT1` del `action` y funciona igual. Tests en vivo con `OPAC_LIVE=1 bin/rails test test/models/opac/session_test.rb`.
 
 Siguiente, en este orden (TDD):
-1. `Opac::Session`: GET de entrada, seguir el meta-refresh, guardar ruta con token y cookies `GN`/`GNW`, GET/POST en ISO-8859-1 devolviendo UTF-8, User-Agent propio. Test de integración contra el OPAC real con `OPAC_LIVE=1`.
-2. `Catalog` con `Rails.cache`.
-3. `SearchesController` (raíz) y `RecordsController`, vistas, biblioteca recordada en cookie.
-4. `rate_limit`, pie con fuente y aviso de servicio no oficial.
+1. `Catalog` con `Rails.cache`. Decidir qué hacer con términos que no caben en ISO-8859-1 (hoy `Opac::Session` lanza `Encoding::UndefinedConversionError`) y con errores HTTP o timeouts del OPAC.
+2. `SearchesController` (raíz) y `RecordsController`, vistas, biblioteca recordada en cookie.
+3. `rate_limit`, pie con fuente y aviso de servicio no oficial.
 
 ## Pendiente
 
