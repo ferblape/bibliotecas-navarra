@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   resources :lists, path: "listas", only: :show do
     resource :selection, only: %i[ create destroy ], module: :lists
   end
+
+  # The catalog for AI agents, over the Model Context Protocol (Streamable HTTP).
+  post "mcp" => "mcp#create"
 end
