@@ -80,7 +80,41 @@ h1, h2 { line-height: 1.25; }
 
 /* Lined up with the name, after the logo. */
 .site-header__tagline { color: var(--muted); font-size: 0.85rem; padding-left: 2.4rem; }
-.site-header__list { margin-left: auto; flex: none; padding-top: 0.3rem; font-weight: 600; }
+.site-header__list {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  flex: none;
+  padding-top: 0.2rem;
+  font-weight: 600;
+}
+
+/* A bookmark with a heart and a badge counting the saved records; it hops when hovered. */
+.list-icon { position: relative; display: inline-block; width: 1.5rem; height: 1.5rem; }
+.list-icon svg { width: 100%; height: 100%; transition: transform 0.25s ease; }
+.list-icon__ribbon { fill: var(--accent); }
+.list-icon__heart { fill: var(--bg); }
+.site-header__list:hover .list-icon svg { transform: translateY(-3px) rotate(-6deg); }
+
+.site-header__count {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.6rem;
+  min-width: 1.1rem;
+  padding: 0 0.25rem;
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.7rem;
+  line-height: 1rem;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .list-icon svg { transition: none; }
+}
 
 .notice {
   padding: 0.75rem 1rem;

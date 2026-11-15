@@ -4,7 +4,16 @@ class LayoutTest < ActionDispatch::IntegrationTest
   test "asks visitors not to abuse the service" do
     get list_path(lists(:mine))
 
-    assert_select ".site-footer", /Esto es un servicio público, por favor no abuses de él\./
+    assert_select ".site-footer", /Es un servicio abierto a todos: por favor, no abuses de él\./
+  end
+
+  test "shows how many records the list of this browser keeps" do
+    cookies[:list] = lists(:mine).token
+
+    get list_path(lists(:mine))
+
+    assert_select ".site-header__list svg"
+    assert_select ".site-header__list .site-header__count", "2"
   end
 
   test "puts the tagline under the name of the site" do

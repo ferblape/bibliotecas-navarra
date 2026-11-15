@@ -34,7 +34,18 @@
         <span class="site-header__tagline">Busca en el catálogo de las Bibliotecas Públicas de Navarra</span>
       </div>
       <% if current_list %>
-        <%= link_to "Mi lista", list_path(current_list), class: "site-header__list" %>
+        <%= link_to list_path(current_list), class: "site-header__list" do %>
+          <span class="list-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="list-icon__ribbon" d="M5 2.5h14v19l-7-5-7 5Z" />
+              <path class="list-icon__heart" d="M12 12.6s-3.6-2.2-3.6-4.5a1.8 1.8 0 0 1 3.6-.6 1.8 1.8 0 0 1 3.6.6c0 2.3-3.6 4.5-3.6 4.5Z" />
+            </svg>
+            <% if (count = current_list.bookmarks.size).positive? %>
+              <span class="site-header__count" aria-label="<%= count %> guardados"><%= count %></span>
+            <% end %>
+          </span>
+          Mi lista
+        <% end %>
       <% end %>
     </header>
 
@@ -57,7 +68,7 @@
         consultado en el momento de cada búsqueda.
       </p>
       <p>Esta web no es un servicio oficial del Gobierno de Navarra ni de sus bibliotecas.</p>
-      <p>Esto es un servicio público, por favor no abuses de él.</p>
+      <p>Es un servicio abierto a todos: por favor, no abuses de él.</p>
     </footer>
   </body>
 </html>

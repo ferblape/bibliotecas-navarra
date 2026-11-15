@@ -57,7 +57,7 @@ class BookmarksTest < ActionDispatch::IntegrationTest
 
     get list_path(lists(:someone_elses))
 
-    assert_select ".site-header a[href='#{list_path(lists(:mine))}']", "Mi lista"
+    assert_select ".site-header a[href='#{list_path(lists(:mine))}']", /Mi lista/
   end
 
   test "removes a bookmark from the list of this browser" do
