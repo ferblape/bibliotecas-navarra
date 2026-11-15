@@ -22,6 +22,7 @@ Las mismas consultas, en Markdown:
   - `library`: el código de una biblioteca, como `BPN/BP21`, para buscar solo en ella.
   - `page`: la página de resultados, de 10 en 10.
   - Ejemplo: <%== root_url(q: "Patria", field: "title", library: "BPN/BP21", format: "md") %>
+- Las bibliotecas, con su código, dirección, teléfono, correo y enlace a Google Maps: <%== libraries_url(format: :md) %>
 - Una ficha con sus ejemplares: <%== root_url %>records/ID.md, con el ID que da la búsqueda. Ejemplo: <%== record_url("554980", format: :md) %>
 
 ## Más

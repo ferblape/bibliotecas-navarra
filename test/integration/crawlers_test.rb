@@ -9,7 +9,7 @@ class CrawlersTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_match(/^User-agent: \*\n(Allow: \S+\n)*Disallow: \/$/, response.body)
-    assert_equal %w[ /llms.txt /agentes /mcp /*.md$ /*format=md ], response.body.scan(/^Allow: (\S+)$/).flatten
+    assert_equal %w[ /llms.txt /agentes /bibliotecas /mcp /*.md$ /*format=md ], response.body.scan(/^Allow: (\S+)$/).flatten
   end
 
   test "asks search engines not to index, follow or archive any page" do

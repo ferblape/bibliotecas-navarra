@@ -1,0 +1,54 @@
+name: Refresh libraries
+
+# Reads the directory of libraries of navarra.es once a month and opens a pull request when
+# the addresses or contacts in config/libraries.yml changed. See LibraryDirectory::Import.
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Import the directory of libraries
+        env:
+          RAILS_ENV: test
+        run: bin/rails libraries:import | tee import.log
+
+      - name: Open a pull request with the changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet config/libraries.yml; then
+            echo "The directory of libraries has not changed."
+            exit 0
+          fi
+          branch="libraries/$(date +%Y-%m-%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -m "Refresh the directory of libraries" config/libraries.yml
+          git push origin "$branch"
+          gh pr create --head "$branch" --title "Refresh the directory of libraries" --body "$(
+            echo "The monthly import of the [directory of libraries of navarra.es](https://www.navarra.es/es/bibliotecas/directorio) found changes in \`config/libraries.yml\`."
+            echo
+            echo '```'
+            cat import.log
+            echo '```'
+            echo
+            echo "Check that every library still has the right centre; fix the ones that do not in \`config/library_overrides.yml\`."
+          )"
