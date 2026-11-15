@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_list
 
+    def recent_records
+      RecentRecords.new(cookies.signed[:recent_records])
+    end
+
     def remember_list(list)
       cookies.permanent[:list] = { value: list.token, httponly: true }
       @current_list = list

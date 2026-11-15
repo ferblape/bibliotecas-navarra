@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
   def show
     @record = Catalog.record(params[:id])
+    cookies.permanent.signed[:recent_records] = recent_records.add(@record).to_cookie
   end
 
   private

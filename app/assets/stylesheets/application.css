@@ -327,3 +327,5 @@ h1, h2 { line-height: 1.25; }
 
 .bookmark { align-items: flex-start; }
 .bookmark__body { flex: 1; min-width: 0; }
+
+.recent-records h2 { margin: 2rem 0 0; font-size: 1.1rem; color: var(--muted); font-weight: 600; }

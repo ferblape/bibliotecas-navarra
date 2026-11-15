@@ -3,7 +3,11 @@ class SearchesController < ApplicationController
 
   def index
     @libraries = Catalog.libraries
-    @results = Catalog.search(query, field:, library: library&.code, page:) if query
+    if query
+      @results = Catalog.search(query, field:, library: library&.code, page:)
+    else
+      @recent_records = recent_records
+    end
   end
 
   private

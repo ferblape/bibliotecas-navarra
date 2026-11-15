@@ -30,3 +30,22 @@
     </p>
   <% end %>
 <% end %>
+
+<% if @recent_records&.any? %>
+  <section class="recent-records">
+    <h2>Vistos recientemente</h2>
+    <ol class="results">
+      <% @recent_records.each do |record| %>
+        <li class="result">
+          <%= render "records/cover", record: %>
+          <div>
+            <h3 class="result__title"><%= link_to record.title, record_path(record.id) %></h3>
+            <% if record.author %>
+              <p class="author"><%= record.author %></p>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ol>
+  </section>
+<% end %>
