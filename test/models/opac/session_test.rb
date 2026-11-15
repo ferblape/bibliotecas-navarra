@@ -11,6 +11,11 @@ class Opac::SessionTest < ActiveSupport::TestCase
     assert_raises(Opac::Session::Refused) { Opac::Session.session_url(opac_fixture("home")) }
   end
 
+  test "presents itself to the OPAC as an ordinary browser" do
+    assert_match %r{\AMozilla/5\.0 .+ Firefox/\d+\.0\z}, Opac::Session::USER_AGENT
+    assert_no_match(/bibliotecas|catalog/i, Opac::Session::USER_AGENT)
+  end
+
   class LiveTest < ActiveSupport::TestCase
     setup do
       skip "Set OPAC_LIVE=1 to run tests against the real OPAC" unless ENV["OPAC_LIVE"]

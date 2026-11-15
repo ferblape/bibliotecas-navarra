@@ -8,7 +8,8 @@ module Opac
 
     ENTRY_PATH = "/opac/abnetcl.exe"
     ENCODING = Encoding::ISO_8859_1
-    USER_AGENT = "BibliotecasNavarra/1.0 (unofficial catalog search)"
+    # A stable Firefox on Windows, so the OPAC sees one more browser rather than this service.
+    USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
     TIMEOUT = 10
 
     mattr_accessor :host, default: "www.navarra.es"
